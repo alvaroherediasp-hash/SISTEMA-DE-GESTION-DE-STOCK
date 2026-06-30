@@ -237,6 +237,214 @@
             .stats { grid-template-columns: 1fr; }
             .categories-grid { grid-template-columns: repeat(3, 1fr); }
         }
+       /* ================================
+   RESPONSIVE
+================================ */
+
+/* Pantallas grandes (TV - Monitores 2K/4K) */
+@media (min-width:1600px){
+
+    .container{
+        max-width:1700px;
+    }
+
+    .products-grid{
+        grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    }
+
+    .stats{
+        grid-template-columns:repeat(6,1fr);
+    }
+
+    .header h1{
+        font-size:34px;
+    }
+
+}
+
+/* Notebook */
+@media (max-width:1200px){
+
+    .container{
+        padding:20px;
+    }
+
+    .products-grid{
+        grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+    }
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+
+/* Tablet */
+@media (max-width:992px){
+
+    .header-content{
+        flex-direction:column;
+        align-items:center;
+        gap:15px;
+    }
+
+    .nav-tabs-content{
+        padding:0 10px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .products-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .search-bar{
+        flex-direction:column;
+    }
+
+    .search-bar input,
+    .search-bar button{
+        width:100%;
+    }
+
+    .barcode-scanner{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .barcode-scanner input,
+    .barcode-scanner button{
+        width:100%;
+    }
+
+    .section-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+
+/* Celulares */
+@media (max-width:768px){
+
+    body{
+        font-size:14px;
+    }
+
+    .container{
+        padding:10px;
+    }
+
+    .header{
+        padding:15px;
+    }
+
+    .logo{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .logo img{
+        width:55px;
+        height:55px;
+    }
+
+    .logo-texto h1{
+        font-size:22px;
+    }
+
+    .db-status{
+        width:100%;
+        justify-content:center;
+    }
+
+    .cart-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .products-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .product-image{
+        height:100px;
+    }
+
+    .product-name{
+        white-space:normal;
+    }
+
+    .product-actions{
+        flex-wrap:wrap;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .modal-content{
+        width:95%;
+        padding:20px;
+    }
+
+    .cart-panel{
+        width:100%;
+    }
+
+    .table-container{
+        overflow-x:auto;
+    }
+
+    .data-table{
+        min-width:900px;
+    }
+
+}
+
+
+/* Celulares pequeños */
+@media (max-width:480px){
+
+    .products-grid{
+        grid-template-columns:1fr;
+    }
+
+    .categories-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .subcategories-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .nav-tab{
+        padding:12px;
+        font-size:13px;
+    }
+
+    .logo-texto h1{
+        font-size:18px;
+    }
+
+    .product-price{
+        font-size:18px;
+    }
+
+    .btn{
+        font-size:14px;
+    }
+
+}
     </style>
 </head>
 <body>
