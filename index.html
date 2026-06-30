@@ -1254,6 +1254,44 @@
                 const d = snap.docs[0]; return { id: d.id, ...d.data() };
             }
 
+            if (collection === 'sales' && method === 'POST' && body) {
+                const rawItems = body.items || [];
+                // Agrupar items repetidos (ej: combos que traen el mismo producto varias veces)
+                const grouped = {};
+                for (const it of rawItems) {
+                    const key = String(it.product_id);
+                    if (!grouped[key]) grouped[key] = 0;
+                    grouped[key] += parseFloat(it.quantity) || 0;
+                }
+
+                let total = 0;
+                const saleItems = [];
+                for (const productId of Object.keys(grouped)) {
+                    const qty = grouped[productId];
+                    if (qty <= 0) continue;
+                    const prodRef = db.collection('products').doc(productId);
+                    const prodSnap = await prodRef.get();
+                    if (!prodSnap.exists) continue;
+                    const p = prodSnap.data();
+                    const price = parseFloat(p.price) || 0;
+                    total += price * qty;
+                    saleItems.push({ product_id: productId, name: p.name, qty: qty, price: price });
+                    await prodRef.update({ stock: FieldValue.increment(-qty) });
+                }
+
+                const nowIso = new Date().toISOString();
+                const saleData = {
+                    items: saleItems,
+                    items_count: saleItems.reduce((s, i) => s + i.qty, 0),
+                    total: total,
+                    payment_method: body.payment_method || 'Efectivo',
+                    created_at: nowIso,
+                    createdAt: nowIso
+                };
+                const docRef = await db.collection('sales').add(saleData);
+                return { id: docRef.id, ...saleData };
+            }
+
             if (collection === 'products' && sub === 'stock' && method === 'PATCH' && body) {
                 await db.collection('products').doc(docId).update({ stock: FieldValue.increment(body.amount) });
                 const up = await db.collection('products').doc(docId).get();
