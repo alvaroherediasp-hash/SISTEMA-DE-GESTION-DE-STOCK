@@ -2248,15 +2248,38 @@
             if (cart.length === 0) { showToast('Carrito vacio', 'error'); return; }
             try {
                 const paymentMethod = document.getElementById('paymentMethod').value;
-                const items = cart.map(item => {
+                const saleItems = [];
+                let total = 0;
+                cart.forEach(item => {
                     if (item.is_combo) {
-                        return item.items.map(i => ({ product_id: i.product_id, quantity: i.quantity }));
+                        item.items.forEach(i => {
+                            saleItems.push({ product_id: String(i.product_id), quantity: i.quantity });
+                        });
+                        total += parseFloat(item.price) * item.quantity;
+                    } else if (item.is_weight) {
+                        saleItems.push({ product_id: String(item.product_id), quantity: item.quantity });
+                        const p = products.find(x => x.id == item.product_id);
+                        if (p) total += parseFloat(p.price) * item.quantity;
                     } else {
-                        return { product_id: item.product_id, quantity: item.quantity };
+                        saleItems.push({ product_id: String(item.product_id), quantity: item.quantity });
+                        const p = products.find(x => x.id == item.product_id);
+                        if (p) total += parseFloat(p.price) * item.quantity;
                     }
-                }).flat();
+                });
                 
-                const sale = await api('/sales', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items, payment_method: paymentMethod }) });
+                for (const si of saleItems) {
+                    const p = products.find(x => x.id == si.product_id);
+                    if (p && p.stock < si.quantity) {
+                        showToast('Stock insuficiente: ' + p.name + ' (disponible: ' + p.stock + ', necesario: ' + si.quantity + ')', 'error');
+                        return;
+                    }
+                }
+                
+                const sale = await api('/sales', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: saleItems, total: total, payment_method: paymentMethod }) });
+                
+                for (const si of saleItems) {
+                    await db.collection('products').doc(si.product_id).update({ stock: FieldValue.increment(-si.quantity) });
+                }
                 
                 lastSale = {
                     id: sale.id,
@@ -2269,7 +2292,7 @@
                             return { name: p?.name || 'Producto', qty: item.quantity, price: p?.price || 0 };
                         }
                     }),
-                    total: sale.total,
+                    total: total,
                     paymentMethod: paymentMethod
                 };
                 
@@ -2280,7 +2303,7 @@
                 toggleCart();
                 showTicketModal();
                 showToast('¡Venta registrada!', 'success');
-            } catch (e) { }
+            } catch (e) { console.error('Error en checkout:', e); showToast('Error al registrar venta: ' + e.message, 'error'); }
         }
 
         function showTicketModal() {
@@ -2294,7 +2317,7 @@
                 <div class="ticket-item">
                     <div class="ticket-item-header">
                         <span class="ticket-item-name">${item.name}</span>
-                        <span class="ticket-item-subtotal">$${(item.price * item.qty).toLocaleString()}</span>
+                        <span class="ticket-item-subtotal">$${(item.price * item.qty).toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2})}</span>
                     </div>
                     <div class="ticket-item-detail">
                         <span class="ticket-item-unit">$${Number(item.price).toLocaleString()} x ${item.qty} ${item.qty > 1 ? 'unidades' : 'unidad'}</span>
@@ -2302,7 +2325,8 @@
                 </div>
             `).join('');
             document.getElementById('ticketItems').innerHTML = itemsHtml;
-            document.getElementById('ticketTotal').textContent = '$' + Number(lastSale.total).toLocaleString();
+            const ticketTotal = lastSale.items.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('ticketTotal').textContent = '$' + ticketTotal.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2});
             
             document.getElementById('ticketModal').classList.add('active');
         }
