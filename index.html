@@ -508,6 +508,149 @@
     }
 
 }
+
+        /* ================================
+           ESTADÍSTICAS
+        ================================ */
+        .stat-filters {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .stat-filters select {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            flex: 1;
+            min-width: 130px;
+        }
+        .stat-filter-btn {
+            background: var(--border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .stat-kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .stat-panels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .stat-panel { overflow: hidden; }
+        .stat-panel-title {
+            padding: 0.85rem 1rem;
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .stat-panel-body { padding: 1rem; }
+        .stat-panel-body table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .stat-panel-body table thead th {
+            padding: 0.5rem 0.75rem;
+            background: #f1f5f9;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            text-align: left;
+        }
+        .stat-panel-body table tbody td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+        .stat-panel-body table tbody tr:last-child td { border-bottom: none; }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.65rem 0;
+            border-bottom: 1px solid var(--border);
+            gap: 0.5rem;
+        }
+        .stat-row:last-child { border-bottom: none; }
+        .stat-row-label { font-size: 0.9rem; flex: 1; }
+        .stat-row-value { font-weight: 700; color: var(--primary); white-space: nowrap; }
+
+        /* ================================
+           COMBOS
+        ================================ */
+        .combo-card {
+            background: white;
+            border-radius: 14px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            border-left: 4px solid #f59e0b;
+            overflow: hidden;
+        }
+        .combo-card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+        }
+        .combo-card-emoji { font-size: 2.5rem; flex-shrink: 0; }
+        .combo-card-info { flex: 1; min-width: 0; }
+        .combo-card-name { font-weight: 700; font-size: 1.1rem; word-break: break-word; }
+        .combo-card-desc { font-size: 0.82rem; color: var(--text-light); margin-top: 0.2rem; }
+        .combo-card-pricing {
+            border-top: 1px solid #f3f4f6;
+            padding: 0.85rem 1.25rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .combo-price-original { text-decoration: line-through; color: var(--text-light); font-size: 0.9rem; }
+        .combo-price-final { font-weight: 800; font-size: 1.4rem; color: #f59e0b; }
+        .combo-discount-badge {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .combo-card-products {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-left: auto;
+            text-align: right;
+            max-width: 200px;
+        }
+        .combo-card-actions {
+            border-top: 1px solid #f3f4f6;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .combo-card-actions .btn {
+            flex: 1;
+            min-width: 90px;
+            text-align: center;
+            font-size: 0.82rem;
+            padding: 0.5rem 0.6rem;
+        }
+
+        @media (max-width: 768px) {
+            .stat-panels-grid { grid-template-columns: 1fr; }
+            .stat-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .combo-card-products { max-width: 100%; text-align: left; margin-left: 0; }
+            .combo-card-pricing { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 480px) {
+            .stat-kpi-grid { grid-template-columns: 1fr; }
+            .stat-filters select { min-width: unset; }
+            .combo-card-actions .btn { min-width: unset; }
+        }
     </style>
 </head>
 <body>
@@ -689,14 +832,15 @@
             <div id="combosList"></div>
         </div>
 
+<!-- ESTADISTICAS TAB -->
         <div id="estadisticas" class="tab-content">
-            <div class="section-header">
-                <h2>Estadisticas y Reportes</h2>
-                <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
-                    <select id="statYear" onchange="loadEstadisticas()" style="padding: 0.5rem 1rem; border: 2px solid var(--border); border-radius: 8px; font-size: 0.9rem; cursor: pointer;">
+            <div class="section-header" style="flex-direction: column; align-items: flex-start; gap: 0.75rem;">
+                <h2>Estadísticas y Reportes</h2>
+                <div class="stat-filters">
+                    <select id="statYear" onchange="loadEstadisticas()">
                         <option value="">Todos los años</option>
                     </select>
-                    <select id="statMonth" onchange="loadEstadisticas()" style="padding: 0.5rem 1rem; border: 2px solid var(--border); border-radius: 8px; font-size: 0.9rem; cursor: pointer;">
+                    <select id="statMonth" onchange="loadEstadisticas()">
                         <option value="">Todos los meses</option>
                         <option value="0">Enero</option>
                         <option value="1">Febrero</option>
@@ -711,11 +855,11 @@
                         <option value="10">Noviembre</option>
                         <option value="11">Diciembre</option>
                     </select>
-                    <button onclick="clearStatFilters()" class="btn btn-sm" style="background: var(--border);">Limpiar Filtros</button>
+                    <button onclick="clearStatFilters()" class="btn btn-sm stat-filter-btn">Limpiar Filtros</button>
                 </div>
             </div>
-            
-            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+
+            <div class="stat-kpi-grid">
                 <div class="stat-card green">
                     <h3>Ventas Totales</h3>
                     <div class="value" id="statTotalSales">$0</div>
@@ -734,25 +878,25 @@
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                <div class="table-container">
-                    <div style="padding: 1rem; background: var(--primary); color: white; font-weight: 600;">Productos Mas Vendidos</div>
-                    <div id="topProducts" style="padding: 1rem;"></div>
+            <div class="stat-panels-grid">
+                <div class="table-container stat-panel">
+                    <div class="stat-panel-title" style="background: var(--primary);">🏆 Productos Más Vendidos</div>
+                    <div id="topProducts" class="stat-panel-body"></div>
                 </div>
-                <div class="table-container">
-                    <div style="padding: 1rem; background: var(--secondary); color: white; font-weight: 600;">Ventas por Categoria</div>
-                    <div id="salesByCategory" style="padding: 1rem;"></div>
+                <div class="table-container stat-panel">
+                    <div class="stat-panel-title" style="background: var(--secondary);">📂 Ventas por Categoría</div>
+                    <div id="salesByCategory" class="stat-panel-body"></div>
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
-                <div class="table-container">
-                    <div style="padding: 1rem; background: var(--danger); color: white; font-weight: 600;">Stock Bajo</div>
-                    <div id="lowStockProducts" style="padding: 1rem;"></div>
+            <div class="stat-panels-grid">
+                <div class="table-container stat-panel">
+                    <div class="stat-panel-title" style="background: var(--danger);">⚠️ Stock Bajo</div>
+                    <div id="lowStockProducts" class="stat-panel-body"></div>
                 </div>
-                <div class="table-container">
-                    <div style="padding: 1rem; background: var(--warning); color: white; font-weight: 600;">Ventas Ultimos 7 Dias</div>
-                    <div id="weeklySales" style="padding: 1rem;"></div>
+                <div class="table-container stat-panel">
+                    <div class="stat-panel-title" style="background: var(--warning); color: #1e293b;">📅 Ventas Últimos 7 Días</div>
+                    <div id="weeklySales" class="stat-panel-body"></div>
                 </div>
             </div>
         </div>
@@ -2398,11 +2542,11 @@
             try {
                 const allSales = await api('/sales');
                 
-                // Cargar categorias para el mapeo categoria_id → nombre
+                // Cargar categorias para mapear id → nombre
                 const allCats = await api('/categories');
                 const catMap = {};
-                allCats.forEach(c => { catMap[c.id] = c.name; });
-                
+                allCats.forEach(c => { catMap[String(c.id)] = c.name; });
+
                 const selectedYear = document.getElementById('statYear').value;
                 const selectedMonth = document.getElementById('statMonth').value;
                 
@@ -2422,122 +2566,101 @@
                     });
                 }
                 
+                const fmt = v => '$' + (parseFloat(v) || 0).toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
                 const totalSales = filteredSales.reduce((sum, s) => sum + (parseFloat(s.total) || 0), 0);
-                document.getElementById('statTotalSales').textContent = '$' + totalSales.toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                document.getElementById('statPeriodSales').textContent = '$' + totalSales.toLocaleString('es-AR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                
+                document.getElementById('statTotalSales').textContent = fmt(totalSales);
+                document.getElementById('statPeriodSales').textContent = fmt(totalSales);
                 const avgTicket = filteredSales.length > 0 ? totalSales / filteredSales.length : 0;
-                document.getElementById('statAvgTicket').textContent = '$' + Math.round(avgTicket).toLocaleString('es-AR');
+                document.getElementById('statAvgTicket').textContent = fmt(avgTicket);
                 document.getElementById('statTotalTransactions').textContent = filteredSales.length;
                 
-                // Productos más vendidos — items pueden tener campo 'name' o 'product_name'
+                // ── Productos más vendidos ──
                 const productSales = {};
                 filteredSales.forEach(sale => {
-                    if (sale.items) {
-                        sale.items.forEach(item => {
-                            const name = item.name || item.product_name || 'Sin nombre';
-                            const qty = parseFloat(item.qty || item.quantity) || 0;
-                            const price = parseFloat(item.price || item.unit_price) || 0;
-                            if (!productSales[name]) productSales[name] = { name, qty: 0, total: 0 };
-                            productSales[name].qty += qty;
-                            productSales[name].total += price * qty;
-                        });
-                    }
+                    (sale.items || []).forEach(item => {
+                        const name = item.name || item.product_name || 'Sin nombre';
+                        const qty  = parseFloat(item.qty || item.quantity) || 0;
+                        const price = parseFloat(item.price || item.unit_price) || 0;
+                        if (!productSales[name]) productSales[name] = { name, qty: 0, total: 0 };
+                        productSales[name].qty   += qty;
+                        productSales[name].total += price * qty;
+                    });
                 });
-                
-                const topProducts = Object.values(productSales).sort((a, b) => b.qty - a.qty).slice(0, 5);
+                const topProducts = Object.values(productSales).sort((a, b) => b.qty - a.qty).slice(0, 8);
                 document.getElementById('topProducts').innerHTML = topProducts.length === 0
-                    ? '<p class="empty-state">Sin datos</p>'
-                    : '<table style="width:100%; border-collapse:collapse;">' +
-                      '<thead><tr>' +
-                      '<th style="text-align:left; padding:0.5rem; border-bottom:2px solid #e2e8f0;">Producto</th>' +
-                      '<th style="text-align:center; padding:0.5rem; border-bottom:2px solid #e2e8f0;">Cant.</th>' +
-                      '<th style="text-align:right; padding:0.5rem; border-bottom:2px solid #e2e8f0;">Total</th>' +
-                      '</tr></thead><tbody>' +
+                    ? '<p class="empty-state">Sin datos de ventas aún</p>'
+                    : '<table><thead><tr><th>Producto</th><th style="text-align:center">Cant.</th><th style="text-align:right">Total</th></tr></thead><tbody>' +
                       topProducts.map((p, i) =>
-                        `<tr style="${i % 2 === 0 ? 'background:#f8fafc;' : ''}">
-                          <td style="padding:0.5rem;">${p.name}</td>
-                          <td style="text-align:center; padding:0.5rem; font-weight:600;">${p.qty}</td>
-                          <td style="text-align:right; padding:0.5rem; color:var(--primary); font-weight:600;">$${p.total.toLocaleString('es-AR', {minimumFractionDigits: 2})}</td>
+                        `<tr style="${i % 2 === 0 ? 'background:#f8fafc' : ''}">
+                           <td>${p.name}</td>
+                           <td style="text-align:center;font-weight:700;">${p.qty}</td>
+                           <td style="text-align:right;color:var(--primary);font-weight:700;">${fmt(p.total)}</td>
                          </tr>`
-                      ).join('') +
-                      '</tbody></table>';
+                      ).join('') + '</tbody></table>';
                 
-                // Ventas por categoría — buscar categoria del producto via products global y catMap
+                // ── Ventas por categoría ──
                 const categorySales = {};
                 filteredSales.forEach(sale => {
-                    if (sale.items) {
-                        sale.items.forEach(item => {
-                            const name = item.name || item.product_name || '';
-                            const qty = parseFloat(item.qty || item.quantity) || 0;
-                            const price = parseFloat(item.price || item.unit_price) || 0;
-                            const prod = products.find(p => p.name === name);
-                            const catName = prod
-                                ? (catMap[prod.category_id] || 'Sin categoria')
-                                : 'Sin categoria';
-                            if (!categorySales[catName]) categorySales[catName] = 0;
-                            categorySales[catName] += price * qty;
-                        });
-                    }
+                    (sale.items || []).forEach(item => {
+                        const name  = item.name || item.product_name || '';
+                        const qty   = parseFloat(item.qty || item.quantity) || 0;
+                        const price = parseFloat(item.price || item.unit_price) || 0;
+                        const prod  = products.find(p => p.name === name);
+                        const catName = prod ? (catMap[String(prod.category_id)] || 'Sin categoría') : 'Sin categoría';
+                        if (!categorySales[catName]) categorySales[catName] = 0;
+                        categorySales[catName] += price * qty;
+                    });
                 });
+                const sortedCats = Object.entries(categorySales).sort((a, b) => b[1] - a[1]);
+                document.getElementById('salesByCategory').innerHTML = sortedCats.length === 0
+                    ? '<p class="empty-state">Sin datos de ventas aún</p>'
+                    : sortedCats.map(([cat, total]) =>
+                        `<div class="stat-row">
+                           <span class="stat-row-label">${cat}</span>
+                           <span class="stat-row-value">${fmt(total)}</span>
+                         </div>`
+                      ).join('');
                 
-                document.getElementById('salesByCategory').innerHTML = Object.keys(categorySales).length === 0
-                    ? '<p class="empty-state">Sin datos</p>'
-                    : Object.entries(categorySales)
-                        .sort((a, b) => b[1] - a[1])
-                        .map(([cat, total]) =>
-                            `<div style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--border);">
-                                <span>${cat}</span>
-                                <span style="font-weight:600; color:var(--primary);">$${total.toLocaleString('es-AR', {minimumFractionDigits: 2})}</span>
-                             </div>`
-                        ).join('');
-                
-                // Stock bajo
-                const lowStock = products.filter(p => p.stock <= p.min_stock);
+                // ── Stock bajo ──
+                const lowStock = products.filter(p => (p.stock || 0) <= (p.min_stock || 0));
                 document.getElementById('lowStockProducts').innerHTML = lowStock.length === 0
-                    ? '<p class="empty-state">No hay productos con stock bajo ✅</p>'
-                    : '<table style="width:100%; border-collapse:collapse;">' +
-                      '<thead><tr>' +
-                      '<th style="text-align:left; padding:0.5rem; border-bottom:2px solid #e2e8f0;">Producto</th>' +
-                      '<th style="text-align:center; padding:0.5rem; border-bottom:2px solid #e2e8f0;">Stock</th>' +
-                      '<th style="text-align:center; padding:0.5rem; border-bottom:2px solid #e2e8f0;">Mínimo</th>' +
-                      '</tr></thead><tbody>' +
+                    ? '<p class="empty-state">✅ Todos los productos con stock suficiente</p>'
+                    : '<table><thead><tr><th>Producto</th><th style="text-align:center">Stock</th><th style="text-align:center">Mín.</th></tr></thead><tbody>' +
                       lowStock.map((p, i) =>
-                        `<tr style="color:${p.stock === 0 ? 'var(--danger)' : '#b45309'}; ${i % 2 === 0 ? 'background:#fef9f0;' : ''}">
-                          <td style="padding:0.5rem;">${p.emoji || ''} ${p.name}</td>
-                          <td style="text-align:center; padding:0.5rem; font-weight:700;">${p.stock}</td>
-                          <td style="text-align:center; padding:0.5rem;">${p.min_stock}</td>
+                        `<tr style="${i % 2 === 0 ? 'background:#fff7f7' : ''}">
+                           <td style="color:${p.stock === 0 ? 'var(--danger)' : '#b45309'};font-weight:600;">${p.emoji || ''} ${p.name}</td>
+                           <td style="text-align:center;font-weight:800;color:${p.stock === 0 ? 'var(--danger)' : '#b45309'};">${p.stock}</td>
+                           <td style="text-align:center;color:var(--text-light);">${p.min_stock}</td>
                          </tr>`
-                      ).join('') +
-                      '</tbody></table>';
+                      ).join('') + '</tbody></table>';
                 
-                // Ventas últimos 7 días
-                const last7Days = [];
+                // ── Ventas últimos 7 días ──
+                const last7 = [];
                 for (let i = 6; i >= 0; i--) {
-                    const date = new Date();
-                    date.setDate(date.getDate() - i);
-                    const dateStr = date.toISOString().split('T')[0];
+                    const d = new Date();
+                    d.setDate(d.getDate() - i);
+                    const dateStr = d.toISOString().split('T')[0];
                     const dayTotal = filteredSales.reduce((sum, s) => {
-                        const sDate = new Date(s.created_at || s.createdAt);
-                        return !isNaN(sDate) && sDate.toISOString().split('T')[0] === dateStr
-                            ? sum + (parseFloat(s.total) || 0)
-                            : sum;
+                        const sd = new Date(s.created_at || s.createdAt);
+                        return !isNaN(sd) && sd.toISOString().split('T')[0] === dateStr
+                            ? sum + (parseFloat(s.total) || 0) : sum;
                     }, 0);
-                    const dayName = date.toLocaleDateString('es-AR', { weekday: 'short', day: 'numeric', month: 'short' });
-                    last7Days.push({ day: dayName, total: dayTotal });
+                    const label = d.toLocaleDateString('es-AR', { weekday: 'short', day: 'numeric', month: 'short' });
+                    last7.push({ label, total: dayTotal });
                 }
-                
-                document.getElementById('weeklySales').innerHTML = last7Days.map(d =>
-                    `<div style="display:flex; justify-content:space-between; align-items:center; padding:0.6rem 0; border-bottom:1px solid var(--border);">
-                        <span style="font-size:0.9rem;">${d.day}</span>
-                        <span style="font-weight:700; color:${d.total > 0 ? 'var(--primary)' : 'var(--text-light)'};">
-                            ${d.total > 0 ? '$' + d.total.toLocaleString('es-AR', {minimumFractionDigits: 2}) : '—'}
-                        </span>
+                document.getElementById('weeklySales').innerHTML = last7.map(d =>
+                    `<div class="stat-row">
+                       <span class="stat-row-label">${d.label}</span>
+                       <span class="stat-row-value" style="color:${d.total > 0 ? 'var(--primary)' : 'var(--text-light)'};">
+                         ${d.total > 0 ? fmt(d.total) : '—'}
+                       </span>
                      </div>`
                 ).join('');
-                
+
             } catch (e) {
                 console.error('Error cargando estadisticas:', e);
+                showToast('Error al cargar estadísticas', 'error');
             }
         }
         
@@ -2855,44 +2978,37 @@
                 const container = document.getElementById('combosList');
                 
                 if (combos.length === 0) {
-                    container.innerHTML = '<div class="empty-state"><p>No hay combos registrados. Crea tu primer combo!</p></div>';
+                    container.innerHTML = '<div class="empty-state"><p>No hay combos registrados. ¡Crea tu primer combo!</p></div>';
                     return;
                 }
                 
-                container.innerHTML = combos.map(c => `
-                    <div style="background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border-left: 4px solid #f59e0b;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div style="display: flex; align-items: center; gap: 1rem;">
-                                <span style="font-size: 2.5rem;">${c.emoji || '🎁'}</span>
-                                <div>
-                                    <div style="font-weight: 700; font-size: 1.2rem;">${c.name}</div>
-                                    ${c.description ? `<div style="font-size: 0.85rem; color: var(--text-light);">${c.description}</div>` : ''}
-                                </div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="display: flex; gap: 0.5rem;">
-                                    <button class="btn btn-sm" onclick="addComboToCart('${c.id}')" style="background: #16a34a; color: white; padding: 0.5rem 1rem;">+ Agregar al Carrito</button>
-                                    <button class="btn btn-sm" onclick="editCombo('${c.id}')" style="background: #f59e0b; color: white; padding: 0.5rem 1rem;">Editar</button>
-                                    <button class="btn btn-sm" onclick="deleteCombo('${c.id}')" style="background: var(--danger); color: white; padding: 0.5rem 1rem;">Eliminar</button>
-                                </div>
+                container.innerHTML = combos.map(c => {
+                    const origPrice = parseFloat(c.original_price) || 0;
+                    const finalPrice = parseFloat(c.final_price) || origPrice;
+                    const discPct = origPrice > 0 ? ((1 - finalPrice / origPrice) * 100).toFixed(0) : 0;
+                    const itemsList = (c.items || []).map(i => `${i.quantity}× ${i.product_name}`).join(' + ') || '—';
+                    return `
+                    <div class="combo-card">
+                        <div class="combo-card-top">
+                            <div class="combo-card-emoji">${c.emoji || '🎁'}</div>
+                            <div class="combo-card-info">
+                                <div class="combo-card-name">${c.name}</div>
+                                ${c.description ? `<div class="combo-card-desc">${c.description}</div>` : ''}
                             </div>
                         </div>
-                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-                                <div>
-                                    <span style="text-decoration: line-through; color: var(--text-light); font-size: 1rem;">$${Number(c.original_price).toLocaleString()}</span>
-                                    <span style="font-weight: 700; font-size: 1.5rem; color: #f59e0b; margin-left: 0.5rem;">$${Number(c.final_price).toLocaleString()}</span>
-                                    <span style="background: #fef3c7; color: #92400e; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; margin-left: 0.5rem;">
-                                        -${c.original_price > 0 ? ((1 - c.final_price / c.original_price) * 100).toFixed(1) + '%' : '0%'}
-                                    </span>
-                                </div>
-                                <div style="font-size: 0.85rem; color: var(--text-light);">
-                                    ${(c.items || []).map(i => `${i.quantity}x ${i.product_name}`).join(' + ')}
-                                </div>
-                            </div>
+                        <div class="combo-card-pricing">
+                            ${origPrice > 0 ? `<span class="combo-price-original">$${origPrice.toLocaleString('es-AR')}</span>` : ''}
+                            <span class="combo-price-final">$${finalPrice.toLocaleString('es-AR')}</span>
+                            ${discPct > 0 ? `<span class="combo-discount-badge">-${discPct}% OFF</span>` : ''}
+                            <div class="combo-card-products">${itemsList}</div>
                         </div>
-                    </div>
-                `).join('');
+                        <div class="combo-card-actions">
+                            <button class="btn" onclick="addComboToCart('${c.id}')" style="background:#16a34a;color:white;">+ Carrito</button>
+                            <button class="btn" onclick="editCombo('${c.id}')" style="background:#f59e0b;color:white;">✏ Editar</button>
+                            <button class="btn" onclick="deleteCombo('${c.id}')" style="background:var(--danger);color:white;">🗑 Eliminar</button>
+                        </div>
+                    </div>`;
+                }).join('');
             } catch (e) { console.error('Error cargando combos:', e); }
         }
 
