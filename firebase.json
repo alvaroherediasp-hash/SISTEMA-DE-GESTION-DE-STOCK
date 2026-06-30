@@ -1,9 +1,14 @@
 {
+  "hosting": {
+    "public": ".",
+    "ignore": ["firebase.json", ".firebaserc", "**/node_modules/**", "*.bat", "*.js", "*.sql", ".gitignore", "package.json", "package-lock.json"],
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
+  },
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
-  },
-  "storage": {
-    "rules": "storage.rules"
   }
 }
