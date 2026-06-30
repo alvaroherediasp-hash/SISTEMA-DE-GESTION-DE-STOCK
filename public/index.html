@@ -1032,10 +1032,13 @@
             }
         }
 
-        async function uploadFileFirebase(file, folder, name) {
-            const ref = storage.ref(folder + '/' + name);
-            await ref.put(file);
-            return await ref.getDownloadURL();
+        async function uploadImage(file, type) {
+            const formData = new FormData();
+            formData.append('file', file);
+            const res = await fetch('http://localhost:3001/upload/' + type, { method: 'POST', body: formData });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error);
+            return data.url;
         }
 
         function showToast(message, type = '') {
@@ -2044,7 +2047,7 @@
                 if (imageInput.files && imageInput.files[0]) {
                     const productId = editingProductId || (await api('/products?search=' + data.name)).slice(-1)[0]?.id;
                     if (productId) {
-                        const url = await uploadFileFirebase(imageInput.files[0], 'products', productId + '.jpg');
+                        const url = await uploadImage(imageInput.files[0], 'products');
                         await db.collection('products').doc(productId).update({ image: url });
                     }
                 }
@@ -2344,7 +2347,7 @@
                     });
                     
                     if (imageInput.files && imageInput.files[0]) {
-                        const url = await uploadFileFirebase(imageInput.files[0], 'categories', editingCategoryId + '.jpg');
+                        const url = await uploadImage(imageInput.files[0], 'categories');
                         await db.collection('categories').doc(editingCategoryId).update({ image: url });
                     }
                     
@@ -2358,7 +2361,7 @@
                     });
                     
                     if (imageInput.files && imageInput.files[0]) {
-                        const url = await uploadFileFirebase(imageInput.files[0], 'categories', result.id + '.jpg');
+                        const url = await uploadImage(imageInput.files[0], 'categories');
                         await db.collection('categories').doc(result.id).update({ image: url });
                     }
                     
@@ -2985,7 +2988,7 @@
 
                 const receiptInput = document.getElementById('purchaseReceipt');
                 if (receiptInput.files && receiptInput.files[0]) {
-                    const url = await uploadFileFirebase(receiptInput.files[0], 'receipts', purchase.id + '.jpg');
+                    const url = await uploadImage(receiptInput.files[0], 'receipts');
                     await db.collection('purchases').doc(purchase.id).update({ receipt: url });
                 }
 
