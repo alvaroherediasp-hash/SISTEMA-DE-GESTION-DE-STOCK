@@ -145,9 +145,9 @@
         .btn-save { flex: 1; padding: 0.8rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
         .btn-cancel { flex: 1; padding: 0.8rem; background: var(--bg); border: 2px solid var(--border); border-radius: 8px; cursor: pointer; }
 
-        .table-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .data-table { width: 100%; border-collapse: collapse; }
-        .data-table th, .data-table td { padding: 1rem; text-align: left; }
+        .table-container { background: white; border-radius: 16px; overflow-x: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .data-table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        .data-table th, .data-table td { padding: 1rem; text-align: left; white-space: nowrap; }
         .data-table th { background: var(--primary); color: white; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
         .data-table tr:nth-child(even) { background: #f8fafc; }
         .data-table tr:hover { background: #f0fdf4; }
@@ -782,7 +782,7 @@
             
             <div id="stockAlerts" style="margin-bottom: 1.5rem;"></div>
             
-            <div class="table-container" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <div class="table-container" style="background: white; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
                 <table class="data-table">
                     <thead style="background: var(--primary); color: white;">
                         <tr>
