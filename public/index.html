@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ENERGIA Y AROMAS EN CASA </title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js"></script>
     <style>
  .logo {
     display: flex;
@@ -248,8 +251,8 @@
 </div>
             <div style="display: flex; gap: 1rem; align-items: center;">
                 <div class="db-status">
-                    <div class="db-dot" id="dbDot"></div>
-                    <span id="dbStatus">Conectando...</span>
+                    <div class="db-dot" id="dbDot" style="background: #22c55e;"></div>
+                    <span id="dbStatus" style="color: #22c55e;">Firebase OK</span>
                 </div>
                 <button class="cart-btn" onclick="toggleCart()">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -893,7 +896,19 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        const API = '/api';
+        const firebaseConfig = {
+            apiKey: "AIzaSyAWuR1-z1ehGvRRy7vHEZsFoIYl8yDR0Vg",
+            authDomain: "sistema-de-gestion-roro.firebaseapp.com",
+            projectId: "sistema-de-gestion-roro",
+            storageBucket: "sistema-de-gestion-roro.firebasestorage.app",
+            messagingSenderId: "279284504819",
+            appId: "1:279284504819:web:1f188b26de95402d243f86",
+            measurementId: "G-JEHZECSSWB"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+        const FieldValue = firebase.firestore.FieldValue;
         let categories = [];
         let mainCategories = [];
         let subCategories = [];
@@ -908,21 +923,119 @@
 
         async function api(endpoint, options = {}) {
             try {
-                const res = await fetch(API + endpoint, options);
-                const data = await res.json();
-                if (!res.ok) throw new Error(data.error || 'Error en la peticion');
-                updateDbStatus(true);
-                return data;
+                return await apiFirestore(endpoint, options);
             } catch (error) {
-                updateDbStatus(false);
                 showToast(error.message, 'error');
                 throw error;
             }
         }
 
-        function updateDbStatus(connected) {
-            document.getElementById('dbDot').className = 'db-dot ' + (connected ? 'connected' : 'disconnected');
-            document.getElementById('dbStatus').textContent = connected ? 'MySQL OK' : 'Sin conexion';
+        async function apiFirestore(endpoint, options = {}) {
+            const method = (options.method || 'GET').toUpperCase();
+            const path = endpoint.replace(/^\//, '');
+            const parts = path.split('/').filter(Boolean);
+            const col = parts[0];
+            const docId = parts[1];
+            const sub = parts[2];
+
+            let queryParams = {};
+            if (col && col.includes('?')) {
+                const [colName, qs] = col.split('?');
+                parts[0] = colName;
+                qs.split('&').forEach(p => {
+                    const [k, v] = p.split('=').map(decodeURIComponent);
+                    queryParams[k] = v;
+                });
+            }
+            const collection = parts[0];
+
+            let body = options.body;
+            if (typeof body === 'string') { try { body = JSON.parse(body); } catch (e) {} }
+
+            if (collection === 'stats') {
+                const snap = await db.collection('products').get();
+                let total = 0, lowStock = 0, outOfStock = 0, investment = 0, potentialValue = 0;
+                snap.forEach(d => {
+                    const p = d.data(); total++;
+                    const stock = p.stock || 0; const price = parseFloat(p.price) || 0;
+                    const pp = parseFloat(p.purchase_price || p.price) || 0;
+                    if (stock === 0) outOfStock++;
+                    if (stock > 0 && stock <= (p.min_stock || 999999)) lowStock++;
+                    investment += stock * pp; potentialValue += stock * price;
+                });
+                const today = new Date(); today.setHours(0, 0, 0, 0);
+                const ss = await db.collection('sales').where('createdAt', '>=', today.toISOString()).get();
+                let ts = 0, tc = 0;
+                ss.forEach(s => { ts += parseFloat(s.data().total || 0); tc++; });
+                return { total_products: total, low_stock: lowStock, out_of_stock: outOfStock, inventory_value: potentialValue, inventory_investment: investment, potential_profit: potentialValue - investment, today_sales: ts, today_count: tc };
+            }
+
+            if (collection === 'stock' || collection === 'inventory') {
+                const snap = await db.collection('products').get();
+                const results = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                results.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+                return results;
+            }
+
+            if (collection === 'products' && docId === 'barcode' && sub) {
+                const snap = await db.collection('products').where('barcode', '==', sub).limit(1).get();
+                if (snap.empty) return null;
+                const d = snap.docs[0]; return { id: d.id, ...d.data() };
+            }
+
+            if (collection === 'products' && sub === 'stock' && method === 'PATCH' && body) {
+                await db.collection('products').doc(docId).update({ stock: FieldValue.increment(body.amount) });
+                const up = await db.collection('products').doc(docId).get();
+                return { id: up.id, ...up.data() };
+            }
+
+            if (sub === 'image' && method === 'DELETE') return { success: true };
+
+            const ref = docId ? db.collection(collection).doc(docId) : null;
+
+            switch (method) {
+                case 'GET': {
+                    if (docId) {
+                        const doc = await db.collection(collection).doc(docId).get();
+                        if (!doc.exists) throw new Error('No encontrado');
+                        return { id: doc.id, ...doc.data() };
+                    }
+                    let query = db.collection(collection);
+                    if (queryParams.subcategory_id) query = query.where('category_id', '==', queryParams.subcategory_id);
+                    if (queryParams.category) query = query.where('category_id', '==', queryParams.category);
+                    const snap = await query.get();
+                    let results = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                    results.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+                    if (queryParams.search) {
+                        const s = queryParams.search.toLowerCase();
+                        results = results.filter(p => (p.name || '').toLowerCase().includes(s));
+                    }
+                    return results;
+                }
+                case 'POST': {
+                    const data = body || {};
+                    if (!data.createdAt) data.createdAt = new Date().toISOString();
+                    const docRef = await db.collection(collection).add(data);
+                    return { id: docRef.id, ...data };
+                }
+                case 'PUT': {
+                    const data = body || {};
+                    data.updatedAt = new Date().toISOString();
+                    await db.collection(collection).doc(docId).set(data, { merge: true });
+                    return { id: docId, ...data };
+                }
+                case 'DELETE': {
+                    await db.collection(collection).doc(docId).delete();
+                    return { success: true };
+                }
+                default: throw new Error('Metodo no soportado');
+            }
+        }
+
+        async function uploadFileFirebase(file, folder, name) {
+            const ref = storage.ref(folder + '/' + name);
+            await ref.put(file);
+            return await ref.getDownloadURL();
         }
 
         function showToast(message, type = '') {
@@ -1929,11 +2042,10 @@
                 
                 const imageInput = document.getElementById('productImage');
                 if (imageInput.files && imageInput.files[0]) {
-                    const formData = new FormData();
-                    formData.append('image', imageInput.files[0]);
                     const productId = editingProductId || (await api('/products?search=' + data.name)).slice(-1)[0]?.id;
                     if (productId) {
-                        await fetch(`/api/products/${productId}/image`, { method: 'POST', body: formData });
+                        const url = await uploadFileFirebase(imageInput.files[0], 'products', productId + '.jpg');
+                        await db.collection('products').doc(productId).update({ image: url });
                     }
                 }
                 
@@ -2232,9 +2344,8 @@
                     });
                     
                     if (imageInput.files && imageInput.files[0]) {
-                        const formData = new FormData();
-                        formData.append('image', imageInput.files[0]);
-                        await fetch(`/api/categories/${editingCategoryId}/image`, { method: 'POST', body: formData });
+                        const url = await uploadFileFirebase(imageInput.files[0], 'categories', editingCategoryId + '.jpg');
+                        await db.collection('categories').doc(editingCategoryId).update({ image: url });
                     }
                     
                     showToast('Categoria actualizada', 'success');
@@ -2247,9 +2358,8 @@
                     });
                     
                     if (imageInput.files && imageInput.files[0]) {
-                        const formData = new FormData();
-                        formData.append('image', imageInput.files[0]);
-                        await fetch(`/api/categories/${result.id}/image`, { method: 'POST', body: formData });
+                        const url = await uploadFileFirebase(imageInput.files[0], 'categories', result.id + '.jpg');
+                        await db.collection('categories').doc(result.id).update({ image: url });
                     }
                     
                     showToast('Categoria creada', 'success');
@@ -2875,9 +2985,8 @@
 
                 const receiptInput = document.getElementById('purchaseReceipt');
                 if (receiptInput.files && receiptInput.files[0]) {
-                    const formData = new FormData();
-                    formData.append('receipt', receiptInput.files[0]);
-                    await fetch(`/api/purchases/${purchase.id}/receipt`, { method: 'POST', body: formData });
+                    const url = await uploadFileFirebase(receiptInput.files[0], 'receipts', purchase.id + '.jpg');
+                    await db.collection('purchases').doc(purchase.id).update({ receipt: url });
                 }
 
                 showToast('Compra registrada correctamente', 'success');
@@ -2901,7 +3010,6 @@
                 await loadProducts(); 
                 await loadStats(); 
                 await loadSuppliers();
-                updateDbStatus(true); 
                 
                 // Handle purchase detail URL
                 const urlParams = new URLSearchParams(window.location.search);
@@ -2909,7 +3017,7 @@
                 if (purchaseId) {
                     showPurchaseDetailPage(purchaseId);
                 }
-            } catch (e) { updateDbStatus(false); }
+            } catch (e) { }
         }
         
        async function showPurchaseDetailPage(id) {

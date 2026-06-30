@@ -1,3 +1,4 @@
 node_modules/
 .env
+.env-mercadito2
 package-lock.json
