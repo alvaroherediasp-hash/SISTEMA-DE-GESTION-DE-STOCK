@@ -1035,10 +1035,11 @@
         async function uploadImage(file, type) {
             const formData = new FormData();
             formData.append('file', file);
-            const res = await fetch('http://localhost:3001/upload/' + type, { method: 'POST', body: formData });
+            formData.append('upload_preset', 'rhnqv3op');
+            const res = await fetch('https://api.cloudinary.com/v1_1/dzeysfmyu/image/upload', { method: 'POST', body: formData });
             const data = await res.json();
-            if (!res.ok) throw new Error(data.error);
-            return data.url;
+            if (!res.ok) throw new Error(data.error?.message || 'Error al subir imagen');
+            return data.secure_url;
         }
 
         function showToast(message, type = '') {
