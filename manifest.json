@@ -1,0 +1,24 @@
+{
+  "name": "Energías y Aromas en Casa",
+  "short_name": "E&A Stock",
+  "description": "Sistema de gestión de stock, ventas y combos",
+  "start_url": "/SISTEMA-DE-GESTION-DE-STOCK/",
+  "display": "standalone",
+  "background_color": "#f0fdf4",
+  "theme_color": "#022841",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "images/logo-removebg-preview.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/logo-removebg-preview.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
