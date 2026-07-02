@@ -154,7 +154,7 @@
 
         .table-container { background: white; border-radius: 16px; overflow-x: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .data-table { width: 100%; border-collapse: collapse; min-width: 900px; }
-        .data-table th, .data-table td { padding: 1rem; text-align: left; white-space: nowrap; }
+        .data-table th, .data-table td { padding: 1rem; text-align: center; white-space: nowrap; }
         .data-table th { background: var(--primary); color: white; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
         .data-table tr:nth-child(even) { background: #F5F3EF; }
         .data-table tr:hover { background: #F0EDE8; }
@@ -794,15 +794,15 @@
                 <table class="data-table">
                     <thead style="background: var(--primary); color: white;">
                         <tr>
-                            <th style="padding: 1rem; text-align: left;">Producto</th>
-                            <th style="padding: 1rem; text-align: left;">Categoria</th>
-                            <th style="padding: 1rem; text-align: right;">P. Venta</th>
-                            <th style="padding: 1rem; text-align: center;">Stock</th>
-                            <th style="padding: 1rem; text-align: center;">Min.</th>
-                            <th style="padding: 1rem; text-align: right;">Valor Venta</th>
-                            <th style="padding: 1rem; text-align: right;">Valor Compra</th>
-                            <th style="padding: 1rem; text-align: center;">Estado</th>
-                            <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            <th style="padding: 1rem;">Producto</th>
+                            <th style="padding: 1rem;">Categoria</th>
+                            <th style="padding: 1rem;">P. Venta</th>
+                            <th style="padding: 1rem;">Stock</th>
+                            <th style="padding: 1rem;">Min.</th>
+                            <th style="padding: 1rem;">Valor Venta</th>
+                            <th style="padding: 1rem;">Valor Compra</th>
+                            <th style="padding: 1rem;">Estado</th>
+                            <th style="padding: 1rem;">Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="stockTable"></tbody>
