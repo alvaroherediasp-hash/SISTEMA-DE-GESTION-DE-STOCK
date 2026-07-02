@@ -1955,9 +1955,10 @@
                     const status = getStockStatus(p.stock, p.min_stock);
                     const valorVenta = (p.stock || 0) * parseFloat(p.price);
                     const valorCompra = (p.stock || 0) * parseFloat(p.purchase_price || p.price);
+                    const catName = p.category_name || (p.category_id ? (categories.find(c => c.id == p.category_id)?.name) : null) || '-';
                     return `<tr>
                         <td style="text-align: center;"><strong>${p.emoji || ''} ${p.name}</strong></td>
-                        <td style="text-align: center;">${p.category_name || '-'}</td>
+                        <td style="text-align: center;">${catName}</td>
                         <td style="text-align: center;">$${Number(p.price).toLocaleString()}</td>
                         <td style="text-align: center;">${p.stock === 0 ? '<span style="color: var(--danger); font-weight: 700;">Sin stock</span>' : p.stock}</td>
                         <td style="text-align: center;">${p.min_stock}</td>
@@ -2178,7 +2179,8 @@
                     const price = Number(p.price).toLocaleString();
                     const emoji = p.emoji || '📦';
                     const name = p.name;
-                    const category = p.category_name || '-';
+                    const catName = p.category_name || (p.category_id ? (categories.find(c => c.id == p.category_id)?.name) : null) || '-';
+                    const category = catName;
                     const stock = p.stock;
                     const minStock = p.min_stock;
                     const weightTag = p.sell_by_weight ? '<span style="background: #F0EDE8; color: #022841; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-left: 0.5rem;">PESO</span>' : '';
@@ -2684,9 +2686,12 @@
 
         async function saveProduct(e) {
             e.preventDefault();
+            const categoryId = document.getElementById('productCategory').value || null;
+            const cat = categories.find(c => c.id == categoryId);
             const data = { 
                 name: document.getElementById('productName').value.trim(), 
-                category_id: document.getElementById('productCategory').value || null, 
+                category_id: categoryId,
+                category_name: cat ? cat.name : null,
                 price: parseFloat(document.getElementById('productPrice').value), 
                 purchase_price: parseFloat(document.getElementById('productPurchasePrice').value) || null,
                 sell_by_weight: document.getElementById('productSellByWeight').checked,
