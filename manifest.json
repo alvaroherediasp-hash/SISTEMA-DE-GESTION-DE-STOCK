@@ -9,13 +9,13 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "images/logo-removebg-preview.png",
+      "src": "images/nuevo-logo.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "images/logo-removebg-preview.png",
+      "src": "images/nuevo-logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
