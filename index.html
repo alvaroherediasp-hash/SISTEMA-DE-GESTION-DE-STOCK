@@ -48,9 +48,9 @@
             }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
         :root {
-            --primary: #022841; --primary-dark: #6501b8; --secondary: #3c0e86;
-            --success: #22c55e; --danger: #ef4444; --warning: #eab308;
-            --bg: #f0fdf4; --card: #fff; --text: #1e293b; --text-light: #64748b; --border: #e2e8f0;
+            --primary: #022841; --primary-dark: #011a30; --secondary: #C4943A;
+            --success: #7A8B3A; --danger: #C1583E; --warning: #D4A843;
+            --bg: #FDF8F0; --card: #FFFDF7; --text: #1e293b; --text-light: #8B7D6B; --border: #E5DDD3;
         }
         body { background: var(--bg); color: var(--text); min-height: 100vh; }
 
@@ -65,8 +65,8 @@
         .logo span { font-size: 0.8rem; opacity: 0.9; }
         .db-status { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; background: rgba(255,255,255,0.2); padding: 0.4rem 0.8rem; border-radius: 20px; }
         .db-dot { width: 8px; height: 8px; border-radius: 50%; }
-        .db-dot.connected { background: #4ade80; }
-        .db-dot.disconnected { background: #f87171; }
+        .db-dot.connected { background: #7A8B3A; }
+        .db-dot.disconnected { background: #C1583E; }
 
         .nav-tabs { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 68px; z-index: 90; }
         .nav-tabs-content { max-width: 1400px; margin: 0 auto; display: flex; overflow-x: auto; padding: 0 2rem; }
@@ -88,22 +88,22 @@
 
         .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
         .category-btn { background: white; border: 2px solid var(--border); padding: 0.75rem; border-radius: 12px; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-        .category-btn:hover { border-color: var(--primary); background: #f0fdf4; }
+        .category-btn:hover { border-color: var(--primary); background: #F0EDE8; }
         .category-btn.active { border-color: var(--primary); background: var(--primary); color: white; }
         .category-btn span { font-size: 0.75rem; font-weight: 600; }
         
         .subcategories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; padding: 1rem; background: white; border-radius: 12px; }
-        .subcategory-back { background: #f8fafc; border: 2px dashed var(--border); padding: 0.75rem; border-radius: 12px; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; color: var(--text-light); }
-        .subcategory-back:hover { border-color: var(--secondary); background: #eff6ff; color: var(--secondary); }
-        .subcategory-btn { background: white; border: 2px solid var(--border); padding: 0.75rem; border-radius: 12px; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-        .subcategory-btn:hover { border-color: var(--secondary); background: #eff6ff; }
+        .subcategory-back { background: #F5F3EF; border: 2px dashed var(--border); padding: 0.75rem; border-radius: 12px; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; color: var(--text-light); }
+        .subcategory-back:hover { border-color: var(--secondary); background: #F0EDE8; color: var(--secondary); }
+        .subcategory-btn { background: #FFFDF7; border: 2px solid var(--border); padding: 0.75rem; border-radius: 12px; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+        .subcategory-btn:hover { border-color: var(--secondary); background: #F0EDE8; }
         .subcategory-btn.active { border-color: var(--secondary); background: var(--secondary); color: white; }
         .subcategory-btn span { font-size: 0.7rem; font-weight: 600; }
 
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; }
         .product-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.3s; }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .product-image { height: 120px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; border-radius: 8px; overflow: hidden; }
+        .product-image { height: 120px; background: linear-gradient(135deg, #FDF8F0 0%, #F0EDE8 100%); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; border-radius: 8px; overflow: hidden; }
         .product-info { padding: 1rem; }
         .product-name { font-weight: 600; margin-bottom: 0.25rem; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .product-price { color: var(--primary); font-weight: 700; font-size: 1.2rem; }
@@ -117,7 +117,7 @@
         .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
         .btn-icon { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; font-size: 1rem; }
         .btn-qty { background: var(--border); color: var(--text); }
-        .btn-qty:hover { background: #cbd5e1; }
+        .btn-qty:hover { background: #D5CCC0; }
 
         .cart-panel { position: fixed; top: 0; right: -420px; width: 420px; max-width: 100%; height: 100vh; background: white; box-shadow: -5px 0 30px rgba(0,0,0,0.2); z-index: 200; transition: right 0.3s ease; display: flex; flex-direction: column; }
         .cart-panel.open { right: 0; }
@@ -125,12 +125,12 @@
         .cart-header h2 { display: flex; align-items: center; gap: 0.5rem; }
         .cart-close { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
         .cart-items { flex: 1; overflow-y: auto; padding: 1rem; }
-        .cart-item { display: flex; gap: 1rem; padding: 1rem; background: #f8fafc; border-radius: 12px; margin-bottom: 0.75rem; }
+        .cart-item { display: flex; gap: 1rem; padding: 1rem; background: #F5F3EF; border-radius: 12px; margin-bottom: 0.75rem; }
         .cart-item-info { flex: 1; }
         .cart-item-name { font-weight: 600; }
         .cart-item-price { color: var(--primary); font-weight: 700; }
         .cart-item-controls { display: flex; align-items: center; gap: 0.5rem; }
-        .cart-footer { padding: 1.5rem; background: #f8fafc; border-top: 2px solid var(--border); }
+        .cart-footer { padding: 1.5rem; background: #F5F3EF; border-top: 2px solid var(--border); }
         .cart-total { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.25rem; font-weight: 700; }
         .btn-checkout { width: 100%; padding: 1rem; background: var(--primary); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
         .btn-checkout:hover { background: var(--primary-dark); }
@@ -155,14 +155,14 @@
         .data-table { width: 100%; border-collapse: collapse; min-width: 900px; }
         .data-table th, .data-table td { padding: 1rem; text-align: left; white-space: nowrap; }
         .data-table th { background: var(--primary); color: white; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
-        .data-table tr:nth-child(even) { background: #f8fafc; }
-        .data-table tr:hover { background: #f0fdf4; }
+        .data-table tr:nth-child(even) { background: #F5F3EF; }
+        .data-table tr:hover { background: #F0EDE8; }
 
         .stock-badge { padding: 0.3rem 0.6rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
-        .stock-badge.high { background: #dcfce7; color: var(--success); }
-        .stock-badge.medium { background: #fef3c7; color: var(--warning); }
-        .stock-badge.low { background: #fed7aa; color: #ea580c; }
-        .stock-badge.out { background: #fee2e2; color: var(--danger); }
+        .stock-badge.high { background: #F0EDE8; color: var(--success); }
+        .stock-badge.medium { background: #F5E6C8; color: var(--warning); }
+        .stock-badge.low { background: #F0D5A0; color: #B07A28; }
+        .stock-badge.out { background: #F5D0C8; color: var(--danger); }
 
         .search-bar { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .search-bar input { flex: 1; min-width: 200px; padding: 0.8rem 1rem; border: 2px solid var(--border); border-radius: 10px; font-size: 1rem; }
@@ -565,7 +565,7 @@
         .stat-panel-body table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
         .stat-panel-body table thead th {
             padding: 0.5rem 0.75rem;
-            background: #f1f5f9;
+            background: #F0EDE8;
             font-size: 0.8rem;
             text-transform: uppercase;
             color: var(--text-light);
@@ -593,7 +593,7 @@
             border-radius: 14px;
             margin-bottom: 1rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-            border-left: 4px solid #f59e0b;
+            border-left: 4px solid #D4A843;
             overflow: hidden;
         }
         .combo-card-top {
@@ -607,7 +607,7 @@
         .combo-card-name { font-weight: 700; font-size: 1.1rem; word-break: break-word; }
         .combo-card-desc { font-size: 0.82rem; color: var(--text-light); margin-top: 0.2rem; }
         .combo-card-pricing {
-            border-top: 1px solid #f3f4f6;
+            border-top: 1px solid #F0EDE8;
             padding: 0.85rem 1.25rem;
             display: flex;
             align-items: center;
@@ -615,10 +615,10 @@
             gap: 0.5rem;
         }
         .combo-price-original { text-decoration: line-through; color: var(--text-light); font-size: 0.9rem; }
-        .combo-price-final { font-weight: 800; font-size: 1.4rem; color: #f59e0b; }
+        .combo-price-final { font-weight: 800; font-size: 1.4rem; color: #D4A843; }
         .combo-discount-badge {
-            background: #fef3c7;
-            color: #92400e;
+            background: #F5E6C8;
+            color: #8B6914;
             padding: 0.2rem 0.5rem;
             border-radius: 6px;
             font-size: 0.78rem;
@@ -632,7 +632,7 @@
             max-width: 200px;
         }
         .combo-card-actions {
-            border-top: 1px solid #f3f4f6;
+            border-top: 1px solid #F0EDE8;
             padding: 0.75rem 1.25rem;
             display: flex;
             gap: 0.5rem;
@@ -671,8 +671,8 @@
 </div>
             <div style="display: flex; gap: 1rem; align-items: center;">
                 <div class="db-status">
-                    <div class="db-dot" id="dbDot" style="background: #22c55e;"></div>
-                    <span id="dbStatus" style="color: #22c55e;">Firebase OK</span>
+                    <div class="db-dot" id="dbDot" style="background: #7A8B3A;"></div>
+                    <span id="dbStatus" style="color: #7A8B3A;">Firebase OK</span>
                 </div>
                 <button class="cart-btn" onclick="toggleCart()">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -707,8 +707,8 @@
                 <div class="stat-card yellow"><h3>Stock Bajo</h3><div class="value" id="statLow">0</div></div>
                 <div class="stat-card red"><h3>Sin Stock</h3><div class="value" id="statOut">0</div></div>
                 <div class="stat-card green"><h3>Ventas Hoy</h3><div class="value" id="statTodaySales">$0</div></div>
-                <div class="stat-card" style="background: #e0f2fe; border-left: 4px solid #0369a1;"><h3 style="color: #0369a1;">Inversión Total</h3><div class="value" id="statInvestment" style="color: #0369a1;">$0</div></div>
-                <div class="stat-card" style="background: #dcfce7; border-left: 4px solid #16a34a;"><h3 style="color: #16a34a;">Ganancia Potencial</h3><div class="value" id="statProfit" style="color: #16a34a;">$0</div></div>
+                <div class="stat-card" style="background: #EDE5D8; border-left: 4px solid #022841;"><h3 style="color: #022841;">Inversión Total</h3><div class="value" id="statInvestment" style="color: #022841;">$0</div></div>
+                <div class="stat-card" style="background: #F0EDE8; border-left: 4px solid #5C6B2E;"><h3 style="color: #5C6B2E;">Ganancia Potencial</h3><div class="value" id="statProfit" style="color: #5C6B2E;">$0</div></div>
             </div>
 
             <div class="categories-grid" id="categoriesGrid"></div>
@@ -749,41 +749,41 @@
 
         <div id="stock" class="tab-content">
             <div class="stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
-                <div class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 1.2rem;">
+                <div class="stat-card" style="background: linear-gradient(135deg, #022841 0%, #011a30 100%); color: white; border: none; padding: 1.2rem;">
                     <h3 style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.5rem;">Total SKUs</h3>
                     <div class="value" id="statSku" style="font-size: 2rem; font-weight: 700;">0</div>
                 </div>
-                <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none; padding: 1.2rem;">
+                <div class="stat-card" style="background: linear-gradient(135deg, #D4A843 0%, #C1583E 100%); color: white; border: none; padding: 1.2rem;">
                     <h3 style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.5rem;">Stock Bajo</h3>
                     <div class="value" id="statLowStock" style="font-size: 2rem; font-weight: 700;">0</div>
                 </div>
-                <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border: none; padding: 1.2rem;">
+                <div class="stat-card" style="background: linear-gradient(135deg, #022841 0%, #3A7A8B 100%); color: white; border: none; padding: 1.2rem;">
                     <h3 style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.5rem;">Sin Stock</h3>
                     <div class="value" id="statNoStock" style="font-size: 2rem; font-weight: 700;">0</div>
                 </div>
-                <div class="stat-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; border: none; padding: 1.2rem;">
+                <div class="stat-card" style="background: linear-gradient(135deg, #7A8B3A 0%, #5C8B7A 100%); color: white; border: none; padding: 1.2rem;">
                     <h3 style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.5rem;">Valor Venta</h3>
                     <div class="value" id="statTotalValue" style="font-size: 1.8rem; font-weight: 700;">$0</div>
                 </div>
-                <div class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 1.2rem;">
+                <div class="stat-card" style="background: linear-gradient(135deg, #022841 0%, #011a30 100%); color: white; border: none; padding: 1.2rem;">
                     <h3 style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.5rem;">Valor Compra</h3>
                     <div class="value" id="statTotalPurchase" style="font-size: 1.8rem; font-weight: 700;">$0</div>
                 </div>
-                <div class="stat-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; border: none; padding: 1.2rem;">
+                <div class="stat-card" style="background: linear-gradient(135deg, #C4943A 0%, #D4A843 100%); color: white; border: none; padding: 1.2rem;">
                     <h3 style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.5rem;">Ganancia Potencial</h3>
                     <div class="value" id="statInvProfit" style="font-size: 1.8rem; font-weight: 700;">$0</div>
                 </div>
             </div>
             
             <div class="search-bar" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-                <input type="text" id="searchStock" placeholder="🔍 Buscar en stock..." oninput="loadStockTable()" style="flex: 1; min-width: 200px; padding: 0.7rem 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.95rem;">
+                <input type="text" id="searchStock" placeholder="🔍 Buscar en stock..." oninput="loadStockTable()" style="flex: 1; min-width: 200px; padding: 0.7rem 1rem; border: 2px solid #E5DDD3; border-radius: 8px; font-size: 0.95rem;">
                 <button class="btn btn-sm" onclick="filterStock('all')" id="filterAll" style="background: var(--primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">Todos</button>
                 <button class="btn btn-sm" onclick="filterStock('out')" id="filterOut" style="background: var(--danger); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">Sin Stock</button>
-                <button class="btn btn-sm" onclick="filterStock('low')" id="filterLow" style="background: var(--warning); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">Stock Bajo</button>
-                <button class="btn btn-sm" onclick="exportLowStockExcel()" style="background: #16a34a; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">📥 Exportar Stock Bajo</button>
-                <button class="btn btn-sm" onclick="exportLowStockPDF()" style="background: #dc2626; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">📄 PDF</button>
-                <button class="btn btn-sm" onclick="exportAllStockExcel()" style="background: #2563eb; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">📥 Exportar Todo</button>
-                <button class="btn btn-sm" onclick="exportAllStockPDF()" style="background: #7c3aed; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">📄 PDF Todo</button>
+                <button class="btn btn-sm" onclick="filterStock('low')" id="filterLow" style="background: var(--warning); color: #1e293b; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">Stock Bajo</button>
+                <button class="btn btn-sm" onclick="exportLowStockExcel()" style="background: #5C6B2E; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">📥 Exportar Stock Bajo</button>
+                <button class="btn btn-sm" onclick="exportLowStockPDF()" style="background: #C1583E; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">📄 PDF</button>
+                <button class="btn btn-sm" onclick="exportAllStockExcel()" style="background: #022841; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">📥 Exportar Todo</button>
+                <button class="btn btn-sm" onclick="exportAllStockPDF()" style="background: #C4943A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">📄 PDF Todo</button>
             </div>
             
             <div id="stockAlerts" style="margin-bottom: 1.5rem;"></div>
@@ -908,10 +908,10 @@
         </div>
 
         <!-- SECCION CATEGORIAS -->
-        <div id="categorias" class="tab-content" style="border-left: 4px solid #ea580c; padding-left: 1rem;">
-            <div class="section-header" style="border-bottom: 3px solid #ea580c;">
-                <h2 style="color: #ea580c;">Gestion de Categorias</h2>
-                <button class="btn" style="background: #ea580c; color: white;" onclick="openCategoryModal()">+ Nueva Categoria</button>
+        <div id="categorias" class="tab-content" style="border-left: 4px solid #C4943A; padding-left: 1rem;">
+            <div class="section-header" style="border-bottom: 3px solid #C4943A;">
+                <h2 style="color: #C4943A;">Gestion de Categorias</h2>
+                <button class="btn" style="background: #C4943A; color: white;" onclick="openCategoryModal()">+ Nueva Categoria</button>
             </div>
             <div id="categoriesList"></div>
         </div>
@@ -1051,17 +1051,17 @@
 
     <!-- MODAL EMOJI PICKER -->
     <div class="modal" id="emojiPickerModal">
-        <div class="modal-content" style="border: 3px solid #6366f1; max-width: 450px; max-height: 80vh; display: flex; flex-direction: column;">
-            <h2 style="color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 0.5rem; margin-bottom: 1rem;">
+        <div class="modal-content" style="border: 3px solid #C4943A; max-width: 450px; max-height: 80vh; display: flex; flex-direction: column;">
+            <h2 style="color: #C4943A; border-bottom: 2px solid #C4943A; padding-bottom: 0.5rem; margin-bottom: 1rem;">
                 Seleccionar Icono
             </h2>
             <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                <button type="button" class="btn btn-sm emoji-cat-btn active" onclick="showEmojiCategory('food')" style="background: #6366f1; color: white;">Comida</button>
-                <button type="button" class="btn btn-sm emoji-cat-btn" onclick="showEmojiCategory('drinks')" style="background: var(--secondary); color: white;">Bebidas</button>
-                <button type="button" class="btn btn-sm emoji-cat-btn" onclick="showEmojiCategory('shop')" style="background: #16a34a; color: white;">Tienda</button>
-                <button type="button" class="btn btn-sm emoji-cat-btn" onclick="showEmojiCategory('office')" style="background: #ea580c; color: white;">Oficina</button>
-                <button type="button" class="btn btn-sm emoji-cat-btn" onclick="showEmojiCategory('tech')" style="background: #2563eb; color: white;">Tecnologia</button>
-                <button type="button" class="btn btn-sm emoji-cat-btn" onclick="showEmojiCategory('other')" style="background: #9333ea; color: white;">Otros</button>
+                <button type="button" class="btn btn-sm emoji-cat-btn active" onclick="showEmojiCategory('food')" style="background: #C4943A; color: white;">Comida</button>
+                <button type="button" class="btn btn-sm emoji-cat-btn" onclick="showEmojiCategory('drinks')" style="background: #C4943A; color: white;">Bebidas</button>
+                <button type="button" class="btn btn-sm emoji-cat-btn" onclick="showEmojiCategory('shop')" style="background: #5C6B2E; color: white;">Tienda</button>
+                <button type="button" class="btn btn-sm emoji-cat-btn" onclick="showEmojiCategory('office')" style="background: #C4943A; color: white;">Oficina</button>
+                <button type="button" class="btn btn-sm emoji-cat-btn" onclick="showEmojiCategory('tech')" style="background: #022841; color: white;">Tecnologia</button>
+                <button type="button" class="btn btn-sm emoji-cat-btn" onclick="showEmojiCategory('other')" style="background: #C1583E; color: white;">Otros</button>
             </div>
             <div id="emojiGrid" style="flex: 1; overflow-y: auto; display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.3rem; padding: 0.5rem;"></div>
             <div class="modal-actions">
@@ -1072,8 +1072,8 @@
 
     <!-- MODAL CATEGORIA -->
     <div class="modal" id="categoryModal">
-        <div class="modal-content" style="border: 3px solid #ea580c; max-width: 500px;">
-            <h2 id="categoryModalTitle" style="color: #ea580c; border-bottom: 2px solid #ea580c; padding-bottom: 0.5rem;">Nueva Categoria</h2>
+        <div class="modal-content" style="border: 3px solid #C4943A; max-width: 500px;">
+            <h2 id="categoryModalTitle" style="color: #C4943A; border-bottom: 2px solid #C4943A; padding-bottom: 0.5rem;">Nueva Categoria</h2>
             <form id="categoryForm" onsubmit="saveCategory(event)">
                 <input type="hidden" id="categoryId">
                 <div class="form-group">
@@ -1083,7 +1083,7 @@
                 <div class="form-group">
                     <label>Logo / Imagen de Marca</label>
                     <div id="categoryImagePreview" style="margin-bottom: 0.5rem; text-align: center;">
-                        <div style="width: 100px; height: 100px; margin: 0 auto; border: 2px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; background: #f8fafc; color: var(--text-light); font-size: 0.8rem;">
+                        <div style="width: 100px; height: 100px; margin: 0 auto; border: 2px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; background: #F5F3EF; color: var(--text-light); font-size: 0.8rem;">
                             Sin imagen
                         </div>
                     </div>
@@ -1102,7 +1102,7 @@
                 </div>
                 <div class="modal-actions">
                     <button type="button" class="btn-cancel" onclick="closeCategoryModal()">Cancelar</button>
-                    <button type="submit" class="btn-save" style="background: #ea580c;">Guardar</button>
+                    <button type="submit" class="btn-save" style="background: #C4943A;">Guardar</button>
                 </div>
             </form>
         </div>
@@ -1196,8 +1196,8 @@
 
     <!-- MODAL VER COMPRA -->
     <div class="modal" id="viewPurchaseModal">
-        <div class="modal-content" style="max-width: 600px; border: 3px solid #9333ea;">
-            <h2 style="color: #9333ea; border-bottom: 2px solid #9333ea; padding-bottom: 0.5rem; margin-bottom: 1rem;">Detalle de Compra</h2>
+        <div class="modal-content" style="max-width: 600px; border: 3px solid #022841;">
+            <h2 style="color: #022841; border-bottom: 2px solid #022841; padding-bottom: 0.5rem; margin-bottom: 1rem;">Detalle de Compra</h2>
             <div id="viewPurchaseDetails"></div>
             <div class="modal-actions">
                 <button type="button" class="btn-cancel" onclick="closeViewPurchaseModal()">Cerrar</button>
@@ -1207,8 +1207,8 @@
 
     <!-- MODAL COMBO -->
     <div class="modal" id="comboModal">
-        <div class="modal-content" style="max-width: 550px; border: 3px solid #f59e0b; max-height: 85vh; overflow-y: auto;">
-            <h2 id="comboModalTitle" style="color: #f59e0b; border-bottom: 2px solid #f59e0b; padding-bottom: 0.5rem; margin-bottom: 1rem;">Nuevo Combo</h2>
+        <div class="modal-content" style="max-width: 550px; border: 3px solid #D4A843; max-height: 85vh; overflow-y: auto;">
+            <h2 id="comboModalTitle" style="color: #D4A843; border-bottom: 2px solid #D4A843; padding-bottom: 0.5rem; margin-bottom: 1rem;">Nuevo Combo</h2>
             <form id="comboForm" onsubmit="saveCombo(event)">
                 <input type="hidden" id="comboId">
                 <div style="display: flex; gap: 1rem;">
@@ -1238,19 +1238,19 @@
                         <input type="number" id="comboDiscountValue" value="10" min="0" step="0.01" oninput="updateComboPrices()">
                     </div>
                 </div>
-                <div id="comboPricePreview" style="background: #fffbeb; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center;">
-                    <div style="font-size: 0.85rem; color: #92400e;">Precio Original: <span id="comboOriginalPrice">$0</span></div>
-                    <div style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">Precio Final: <span id="comboFinalPrice">$0</span></div>
-                    <div style="font-size: 0.85rem; color: #16a34a; margin-top: 0.25rem;">Ahorras: <span id="comboSavings">$0</span></div>
+                <div id="comboPricePreview" style="background: #FDF8F0; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center;">
+                    <div style="font-size: 0.85rem; color: #8B6914;">Precio Original: <span id="comboOriginalPrice">$0</span></div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #D4A843;">Precio Final: <span id="comboFinalPrice">$0</span></div>
+                    <div style="font-size: 0.85rem; color: #5C6B2E; margin-top: 0.25rem;">Ahorras: <span id="comboSavings">$0</span></div>
                 </div>
                 <div class="form-group">
                     <label>Productos del Combo</label>
                     <div id="comboProductsList" style="max-height: 200px; overflow-y: auto; border: 2px solid var(--border); border-radius: 8px; padding: 0.5rem;"></div>
-                    <button type="button" class="btn btn-sm" onclick="addComboProduct()" style="background: #f59e0b; color: white; margin-top: 0.5rem;">+ Agregar Producto</button>
+                    <button type="button" class="btn btn-sm" onclick="addComboProduct()" style="background: #D4A843; color: white; margin-top: 0.5rem;">+ Agregar Producto</button>
                 </div>
                 <div class="modal-actions">
                     <button type="button" class="btn-cancel" onclick="closeComboModal()">Cancelar</button>
-                    <button type="submit" class="btn-save" style="background: #f59e0b;">Guardar Combo</button>
+                    <button type="submit" class="btn-save" style="background: #D4A843;">Guardar Combo</button>
                 </div>
             </form>
         </div>
@@ -1273,9 +1273,9 @@
                         <span id="weightUnitDisplay">kg</span>
                     </div>
                 </div>
-                <div style="background: #f0fdf4; padding: 1rem; border-radius: 8px; text-align: center; margin-bottom: 1rem;">
-                    <div style="font-size: 0.9rem; color: #166534;">TOTAL:</div>
-                    <div style="font-size: 1.5rem; font-weight: 700; color: #16a34a;" id="weightTotal">$0</div>
+                <div style="background: #FDF8F0; padding: 1rem; border-radius: 8px; text-align: center; margin-bottom: 1rem;">
+                    <div style="font-size: 0.9rem; color: #4A5A20;">TOTAL:</div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #5C6B2E;" id="weightTotal">$0</div>
                 </div>
                 <div style="display: flex; gap: 0.5rem;">
                     <button type="button" class="btn-cancel" style="flex: 1;" onclick="closeWeightModal()">Cancelar</button>
@@ -1860,7 +1860,7 @@
         
             const statusText = p => getStockStatus(p.stock, p.min_stock).text;
             const rows = lowItems.map(p => `
-                <tr${p.stock === 0 ? ' style="background:#fee2e2"' : ' style="background:#fef3c7"'}>
+                <tr${p.stock === 0 ? ' style="background:#F5D0C8"' : ' style="background:#F5E6C8"'}>
                     <td style="padding:6px 10px;border:1px solid #ddd">${p.emoji || ''} ${p.name}</td>
                     <td style="padding:6px 10px;border:1px solid #ddd">${p.category_name || '-'}</td>
                     <td style="padding:6px 10px;border:1px solid #ddd;text-align:right">$${Number(p.price).toLocaleString()}</td>
@@ -1875,9 +1875,9 @@
             w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>Stock Bajo</title>'
                 + '<style>body{font-family:Arial,sans-serif;padding:20px}h1{color:#333;font-size:18px;margin-bottom:5px}'
                 + '.fecha{color:#666;font-size:13px;margin-bottom:20px}table{width:100%;border-collapse:collapse;font-size:13px}'
-                + 'th{padding:8px 10px;border:1px solid #999;background:#2563eb;color:#fff;text-align:center}'
+                + 'th{padding:8px 10px;border:1px solid #999;background:#022841;color:#fff;text-align:center}'
                 + 'td{padding:6px 10px;border:1px solid #ddd}'
-                + '@media print{body{padding:10px}th{background:#2563eb!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+                + '@media print{body{padding:10px}th{background:#022841!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
                 + 'tr{break-inside:avoid}}</style></head><body>'
                 + '<h1>Reporte de Stock Bajo</h1>'
                 + '<div class="fecha">' + new Date().toLocaleDateString() + ' - ' + lowItems.length + ' producto(s) con stock bajo</div>'
@@ -1924,7 +1924,7 @@
             const items = allStockData;
             const statusText = p => getStockStatus(p.stock, p.min_stock).text;
             const rows = items.map(p => {
-                const bg = p.stock === 0 ? ' style="background:#fee2e2"' : (p.stock <= p.min_stock ? ' style="background:#fef3c7"' : '');
+                const bg = p.stock === 0 ? ' style="background:#F5D0C8"' : (p.stock <= p.min_stock ? ' style="background:#F5E6C8"' : '');
                 return `<tr${bg}>
                     <td style="padding:6px 10px;border:1px solid #ddd">${p.emoji || ''} ${p.name}</td>
                     <td style="padding:6px 10px;border:1px solid #ddd">${p.category_name || '-'}</td>
@@ -1941,9 +1941,9 @@
             w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>Stock Completo</title>'
                 + '<style>body{font-family:Arial,sans-serif;padding:20px}h1{color:#333;font-size:18px;margin-bottom:5px}'
                 + '.fecha{color:#666;font-size:13px;margin-bottom:20px}table{width:100%;border-collapse:collapse;font-size:13px}'
-                + 'th{padding:8px 10px;border:1px solid #999;background:#2563eb;color:#fff;text-align:center}'
+                + 'th{padding:8px 10px;border:1px solid #999;background:#022841;color:#fff;text-align:center}'
                 + 'td{padding:6px 10px;border:1px solid #ddd}'
-                + '@media print{body{padding:10px}th{background:#2563eb!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+                + '@media print{body{padding:10px}th{background:#022841!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
                 + 'tr{break-inside:avoid}}</style></head><body>'
                 + '<h1>Reporte Completo de Stock</h1>'
                 + '<div class="fecha">' + new Date().toLocaleDateString() + ' - ' + items.length + ' producto(s)</div>'
@@ -1962,7 +1962,7 @@
             let html = '';
             
             if (outOfStock.length > 0) {
-                html += `<div style="background: #fee2e2; border-left: 4px solid var(--danger); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                html += `<div style="background: #F5D0C8; border-left: 4px solid var(--danger); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
                     <h4 style="color: var(--danger); margin-bottom: 0.5rem;">Sin Stock (${outOfStock.length})</h4>
                     <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                         ${outOfStock.map(p => `<span style="background: white; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.85rem;">${p.emoji || ''} ${p.name}</span>`).join('')}
@@ -1971,8 +1971,8 @@
             }
             
             if (lowStock.length > 0) {
-                html += `<div style="background: #fef3c7; border-left: 4px solid var(--warning); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                    <h4 style="color: #b45309; margin-bottom: 0.5rem;">Stock Bajo (${lowStock.length})</h4>
+                html += `<div style="background: #F5E6C8; border-left: 4px solid var(--warning); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <h4 style="color: #8B6914; margin-bottom: 0.5rem;">Stock Bajo (${lowStock.length})</h4>
                     <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                         ${lowStock.map(p => `<span style="background: white; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.85rem;">${p.emoji || ''} ${p.name} (${p.stock})</span>`).join('')}
                     </div>
@@ -1980,7 +1980,7 @@
             }
             
             if (outOfStock.length === 0 && lowStock.length === 0) {
-                html = `<div style="background: #dcfce7; border-left: 4px solid var(--success); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                html = `<div style="background: #F0EDE8; border-left: 4px solid var(--success); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
                     <h4 style="color: var(--success);">Todos los productos con stock suficiente</h4>
                 </div>`;
             }
@@ -2021,12 +2021,12 @@
                     const category = p.category_name || '-';
                     const stock = p.stock;
                     const minStock = p.min_stock;
-                    const weightTag = p.sell_by_weight ? '<span style="background: #dbeafe; color: #1e40af; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-left: 0.5rem;">PESO</span>' : '';
+                    const weightTag = p.sell_by_weight ? '<span style="background: #F0EDE8; color: #022841; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-left: 0.5rem;">PESO</span>' : '';
                     const stockDisplay = stock + (p.sell_by_weight ? ' ' + (p.weight_unit || 'kg') : '');
                     const statusClass = status.class === 'out' ? 'var(--danger)' : status.class === 'low' ? 'var(--warning)' : 'var(--success)';
-                    const statusTextClass = status.class === 'out' ? '#991b1b' : status.class === 'low' ? '#92400e' : '#166534';
+                    const statusTextClass = status.class === 'out' ? '#8B3A2A' : status.class === 'low' ? '#8B6914' : '#4A5A20';
                     
-                    return '<tr style="border-bottom: 1px solid #f1f5f9; transition: background 0.2s;" onmouseover="this.style.background=\'#f8fafc\'" onmouseout="this.style.background=\'white\'">' +
+                    return '<tr style="border-bottom: 1px solid #F0EDE8; transition: background 0.2s;" onmouseover="this.style.background=\'#F5F3EF\'" onmouseout="this.style.background=\'white\'">' +
                         '<td style="padding: 1rem; font-weight: 500;">' +
                             '<span style="font-size: 1.2rem; margin-right: 0.5rem;">' + emoji + '</span>' +
                             name + weightTag +
@@ -2038,11 +2038,11 @@
                         '<td style="padding: 1rem; text-align: right; font-weight: 600; color: var(--success);">$' + Number(saleValue).toLocaleString() + '</td>' +
                         '<td style="padding: 1rem; text-align: right; color: ' + (p.purchase_price ? 'var(--secondary)' : 'var(--text-light)') + '">$' + (purchaseValue !== '-' ? Number(purchaseValue).toLocaleString() : '-') + '</td>' +
                         '<td style="padding: 1rem; text-align: center;">' +
-                            '<span style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; background: ' + (status.class === 'out' ? '#fee2e2' : status.class === 'low' ? '#fef3c7' : '#dcfce7') + '; color: ' + statusTextClass + '">' + status.text + '</span>' +
+                            '<span style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; background: ' + (status.class === 'out' ? '#F5D0C8' : status.class === 'low' ? '#F5E6C8' : '#F0EDE8') + '; color: ' + statusTextClass + '">' + status.text + '</span>' +
                         '</td>' +
                         '<td style="padding: 1rem; text-align: center;">' +
-                            '<button class="btn-icon" style="background: #f59e0b; color: white; width: 32px; height: 32px; border-radius: 6px; border: none; cursor: pointer; margin-right: 0.5rem; font-size: 0.9rem;" onclick="editProduct(\'' + p.id + '\')">✏</button>' +
-                            '<button class="btn-icon" style="background: #dc2626; color: white; width: 32px; height: 32px; border-radius: 6px; border: none; cursor: pointer; font-size: 0.9rem;" onclick="deleteProduct(\'' + p.id + '\')">🗑</button>' +
+                            '<button class="btn-icon" style="background: #D4A843; color: white; width: 32px; height: 32px; border-radius: 6px; border: none; cursor: pointer; margin-right: 0.5rem; font-size: 0.9rem;" onclick="editProduct(\'' + p.id + '\')">✏</button>' +
+                            '<button class="btn-icon" style="background: #C1583E; color: white; width: 32px; height: 32px; border-radius: 6px; border: none; cursor: pointer; font-size: 0.9rem;" onclick="deleteProduct(\'' + p.id + '\')">🗑</button>' +
                         '</td>' +
                     '</tr>';
                 }).join('');
@@ -2062,13 +2062,13 @@
             let html = '';
             for (const item of cart) {
                 if (item.is_combo) {
-                    html += '<div class="cart-item" style="background: #fffbeb; border-left: 3px solid #f59e0b;">' +
+                    html += '<div class="cart-item" style="background: #FDF8F0; border-left: 3px solid #D4A843;">' +
                         '<div style="font-size: 2rem;">' + (item.emoji || '🎁') + '</div>' +
                         '<div class="cart-item-info">' +
-                            '<div class="cart-item-name" style="color: #92400e;">' + item.name + ' <span style="font-size: 0.7rem; background: #fef3c7; padding: 0.1rem 0.3rem; border-radius: 3px;">COMBO</span></div>' +
+                            '<div class="cart-item-name" style="color: #8B6914;">' + item.name + ' <span style="font-size: 0.7rem; background: #F5E6C8; padding: 0.1rem 0.3rem; border-radius: 3px;">COMBO</span></div>' +
                             '<div class="cart-item-price">' +
                                 '<span style="text-decoration: line-through; color: var(--text-light); font-size: 0.85rem;">$' + Number(item.original_price).toLocaleString() + '</span> ' +
-                                '<span style="color: #f59e0b; font-weight: 700;">$' + Number(item.price).toLocaleString() + '</span>' +
+                                '<span style="color: #D4A843; font-weight: 700;">$' + Number(item.price).toLocaleString() + '</span>' +
                             '</div>' +
                         '</div>' +
                         '<div class="cart-item-controls">' +
@@ -2622,11 +2622,11 @@
                     ? '<p class="empty-state">Sin datos de ventas aún</p>'
                     : '<table><thead><tr><th>Producto</th><th style="text-align:center">Cant.</th><th style="text-align:right">Total</th></tr></thead><tbody>' +
                       topProducts.map((p, i) =>
-                        `<tr style="${i % 2 === 0 ? 'background:#f8fafc' : ''}">
-                           <td>${p.name}</td>
-                           <td style="text-align:center;font-weight:700;">${p.qty}</td>
-                           <td style="text-align:right;color:var(--primary);font-weight:700;">${fmt(p.total)}</td>
-                         </tr>`
+                        `<tr style="${i % 2 === 0 ? 'background:#F5F3EF' : ''}">
+                            <td>${p.name}</td>
+                            <td style="text-align:center;font-weight:700;">${p.qty}</td>
+                            <td style="text-align:right;color:var(--primary);font-weight:700;">${fmt(p.total)}</td>
+                          </tr>`
                       ).join('') + '</tbody></table>';
                 
                 // ── Ventas por categoría ──
@@ -2658,9 +2658,9 @@
                     ? '<p class="empty-state">✅ Todos los productos con stock suficiente</p>'
                     : '<table><thead><tr><th>Producto</th><th style="text-align:center">Stock</th><th style="text-align:center">Mín.</th></tr></thead><tbody>' +
                       lowStock.map((p, i) =>
-                        `<tr style="${i % 2 === 0 ? 'background:#fff7f7' : ''}">
-                           <td style="color:${p.stock === 0 ? 'var(--danger)' : '#b45309'};font-weight:600;">${p.emoji || ''} ${p.name}</td>
-                           <td style="text-align:center;font-weight:800;color:${p.stock === 0 ? 'var(--danger)' : '#b45309'};">${p.stock}</td>
+                        `<tr style="${i % 2 === 0 ? 'background:#F5F3EF' : ''}">
+                            <td style="color:${p.stock === 0 ? 'var(--danger)' : '#8B6914'};font-weight:600;">${p.emoji || ''} ${p.name}</td>
+                            <td style="text-align:center;font-weight:800;color:${p.stock === 0 ? 'var(--danger)' : '#8B6914'};">${p.stock}</td>
                            <td style="text-align:center;color:var(--text-light);">${p.min_stock}</td>
                          </tr>`
                       ).join('') + '</tbody></table>';
@@ -2754,7 +2754,7 @@
             mainCategories.forEach(cat => {
                 const children = subCategories.filter(sc => sc.parent_id === cat.id);
                 html += `
-                    <div style="background: white; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #ea580c;">
+                    <div style="background: white; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #C4943A;">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 ${getCategoryIcon(cat)}
@@ -2804,7 +2804,7 @@
             editingCategoryId = id;
             document.getElementById('categoryModalTitle').textContent = id ? 'Editar Categoria' : 'Nueva Categoria';
             document.getElementById('categoryForm').reset();
-            document.getElementById('categoryImagePreview').innerHTML = '<div style="width: 100px; height: 100px; margin: 0 auto; border: 2px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; background: #f8fafc; color: var(--text-light); font-size: 0.8rem;">Sin imagen</div>';
+            document.getElementById('categoryImagePreview').innerHTML = '<div style="width: 100px; height: 100px; margin: 0 auto; border: 2px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; background: #F5F3EF; color: var(--text-light); font-size: 0.8rem;">Sin imagen</div>';
             document.getElementById('removeCategoryImageBtn').style.display = 'none';
             updateCategoryParentSelect();
             
@@ -2847,7 +2847,7 @@
                 } catch (e) { }
             }
             document.getElementById('categoryImage').value = '';
-            document.getElementById('categoryImagePreview').innerHTML = '<div style="width: 100px; height: 100px; margin: 0 auto; border: 2px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; background: #f8fafc; color: var(--text-light); font-size: 0.8rem;">Sin imagen</div>';
+            document.getElementById('categoryImagePreview').innerHTML = '<div style="width: 100px; height: 100px; margin: 0 auto; border: 2px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; background: #F5F3EF; color: var(--text-light); font-size: 0.8rem;">Sin imagen</div>';
             document.getElementById('removeCategoryImageBtn').style.display = 'none';
         }
 
@@ -3033,8 +3033,8 @@
                             <div class="combo-card-products">${itemsList}</div>
                         </div>
                         <div class="combo-card-actions">
-                            <button class="btn" onclick="addComboToCart('${c.id}')" style="background:#16a34a;color:white;">+ Carrito</button>
-                            <button class="btn" onclick="editCombo('${c.id}')" style="background:#f59e0b;color:white;">✏ Editar</button>
+                            <button class="btn" onclick="addComboToCart('${c.id}')" style="background:#5C6B2E;color:white;">+ Carrito</button>
+                            <button class="btn" onclick="editCombo('${c.id}')" style="background:#D4A843;color:white;">✏ Editar</button>
                             <button class="btn" onclick="deleteCombo('${c.id}')" style="background:var(--danger);color:white;">🗑 Eliminar</button>
                         </div>
                     </div>`;
@@ -3311,8 +3311,8 @@
                 }
                 
                 container.innerHTML = purchases.map(p => `
-                    <div class="purchase-card" style="margin-bottom: 1rem; border: 2px solid #9333ea; border-radius: 12px; overflow: hidden;">
-                        <div style="background: #9333ea; color: white; padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center;">
+                    <div class="purchase-card" style="margin-bottom: 1rem; border: 2px solid #022841; border-radius: 12px; overflow: hidden;">
+                        <div style="background: #022841; color: white; padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center;">
                             <div>
                                 <div style="font-weight: 700;">Compra #${p.id}</div>
                                 <div style="font-size: 0.8rem; opacity: 0.9;">${new Date(p.created_at).toLocaleString('es-AR')}</div>
@@ -3322,24 +3322,24 @@
                                 <div style="font-size: 0.75rem; opacity: 0.9;">${p.items ? p.items.length : 0} items</div>
                             </div>
                         </div>
-                        <div style="padding: 1rem; background: #fafafa;">
-                            <div style="font-size: 0.85rem; color: #2563eb; margin-bottom: 0.5rem;">
+                        <div style="padding: 1rem; background: #F5F3EF;">
+                            <div style="font-size: 0.85rem; color: #022841; margin-bottom: 0.5rem;">
                                 <strong>Proveedor:</strong> ${p.supplier_name || 'Sin proveedor'}
                             </div>
-                            ${p.notes ? `<div style="font-size: 0.8rem; color: #b45309; background: #fef3c7; padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem;"><strong>Notas:</strong> ${p.notes}</div>` : ''}
+                            ${p.notes ? `<div style="font-size: 0.8rem; color: #8B6914; background: #F5E6C8; padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem;"><strong>Notas:</strong> ${p.notes}</div>` : ''}
                         </div>
                         <div style="max-height: 150px; overflow-y: auto;">
                             ${p.items && p.items.length > 0 ? p.items.map((i, idx) => `
-                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1rem; ${idx < p.items.length - 1 ? 'border-bottom: 1px solid #f1f5f9;' : ''} background: white;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1rem; ${idx < p.items.length - 1 ? 'border-bottom: 1px solid #F0EDE8;' : ''} background: white;">
                                     <div style="flex: 1;">
                                         <div style="font-weight: 500; font-size: 0.9rem;">${i.product_name || 'Producto'}</div>
                                         <div style="font-size: 0.75rem; color: var(--text-light);">${i.quantity} x $${Number(i.unit_cost).toLocaleString()}</div>
                                     </div>
-                                    <div style="font-weight: 600; color: #9333ea; font-size: 0.9rem;">$${Number(i.subtotal).toLocaleString()}</div>
+                                    <div style="font-weight: 600; color: #022841; font-size: 0.9rem;">$${Number(i.subtotal).toLocaleString()}</div>
                                 </div>
                             `).join('') : '<div style="padding: 1rem; text-align: center; color: var(--text-light);">Sin items</div>'}
                         </div>
-                        ${p.receipt_image ? `<div style="padding: 0.75rem 1rem; border-top: 1px solid #e2e8f0; background: white;"><button class="btn btn-sm" style="background: var(--secondary); color: white;" onclick="viewReceipt('${p.id}')">Ver Comprobante</button></div>` : ''}
+                        ${p.receipt_image ? `<div style="padding: 0.75rem 1rem; border-top: 1px solid #E5DDD3; background: white;"><button class="btn btn-sm" style="background: var(--secondary); color: white;" onclick="viewReceipt('${p.id}')">Ver Comprobante</button></div>` : ''}
                     </div>
                 `).join('');
             } catch (e) { console.error('Error cargando compras:', e); }
@@ -3354,18 +3354,18 @@
                 <head>
                     <title>Detalle de Compra #${id}</title>
                     <style>
-                        body { font-family: Arial, sans-serif; padding: 20px; margin: 0; background: #f5f5f5; }
+                        body { font-family: Arial, sans-serif; padding: 20px; margin: 0; background: #FDF8F0; }
                         .card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); max-width: 450px; margin: 0 auto; }
-                        h1 { color: #9333ea; margin-top: 0; font-size: 1.3rem; }
+                        h1 { color: #022841; margin-top: 0; font-size: 1.3rem; }
                         .row { display: flex; justify-content: space-between; margin-bottom: 15px; }
                         .label { color: #666; font-size: 0.9rem; }
                         .value { font-weight: bold; }
-                        .total { color: #9333ea; font-size: 1.5rem; }
+                        .total { color: #022841; font-size: 1.5rem; }
                         table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
-                        th { background: #9333ea; color: white; padding: 8px; text-align: left; }
+                        th { background: #022841; color: white; padding: 8px; text-align: left; }
                         td { padding: 8px; border-bottom: 1px solid #eee; }
-                        .close-btn { background: #9333ea; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px; width: 100%; font-size: 1rem; }
-                        .close-btn:hover { background: #7c22ce; }
+                        .close-btn { background: #022841; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px; width: 100%; font-size: 1rem; }
+                        .close-btn:hover { background: #011a30; }
                     </style>
                 </head>
                 <body>
@@ -3381,11 +3381,11 @@
                                 <div class="value total">$${Number(purchase.total).toLocaleString()}</div>
                             </div>
                         </div>
-                        <div style="background: #f8fafc; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <div style="background: #F5F3EF; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
                             <div class="label">Proveedor</div>
                             <div class="value">${purchase.supplier_name || 'Sin proveedor'}</div>
                         </div>
-                        ${purchase.notes ? `<div style="background: #fef3c7; padding: 10px; border-radius: 5px; margin-bottom: 10px;"><div class="label">Notas</div><div>${purchase.notes}</div></div>` : ''}
+                        ${purchase.notes ? `<div style="background: #F5E6C8; padding: 10px; border-radius: 5px; margin-bottom: 10px;"><div class="label">Notas</div><div>${purchase.notes}</div></div>` : ''}
                         <table>
                             <thead><tr><th>Producto</th><th>Cant.</th><th>Costo</th><th>Subtotal</th></tr></thead>
                             <tbody>
@@ -3556,13 +3556,13 @@
             <div style="max-width: 500px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
                 <button onclick="window.location.href='?tab=purchases'" style="background: #666; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-bottom: 15px;">← Volver</button>
                 
-                <h1 style="color: #9333ea; margin-bottom: 20px;">Compra #${id}</h1>
+                <h1 style="color: #022841; margin-bottom: 20px;">Compra #${id}</h1>
 
                 <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
                     <p><strong>Fecha:</strong> ${new Date(purchase.created_at).toLocaleString('es-AR')}</p>
                     <p><strong>Proveedor:</strong> ${purchase.supplier_name || 'Sin proveedor'}</p>
                     <p><strong>Total:</strong> 
-                        <span style="color: #9333ea; font-size: 1.3em;">
+                        <span style="color: #022841; font-size: 1.3em;">
                             $${Number(purchase.total).toFixed(2)}
                         </span>
                     </p>
@@ -3573,7 +3573,7 @@
 
                 <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden;">
                     <thead>
-                        <tr style="background: #9333ea; color: white;">
+                        <tr style="background: #022841; color: white;">
                             <th style="padding:10px;">Producto</th>
                             <th style="padding:10px; text-align: center;">Cant.</th>
                             <th style="padding:10px; text-align: right;">Costo</th>

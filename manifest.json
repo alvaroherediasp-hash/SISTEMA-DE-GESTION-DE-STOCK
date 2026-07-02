@@ -4,7 +4,7 @@
   "description": "Sistema de gestión de stock, ventas y combos",
   "start_url": "/SISTEMA-DE-GESTION-DE-STOCK/",
   "display": "standalone",
-  "background_color": "#f0fdf4",
+  "background_color": "#FDF8F0",
   "theme_color": "#022841",
   "orientation": "any",
   "icons": [
