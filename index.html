@@ -2445,10 +2445,6 @@
                 
                 const sale = await api('/sales', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: saleItems, total: total, payment_method: paymentMethod }) });
                 
-                for (const si of saleItems) {
-                    await db.collection('products').doc(si.product_id).update({ stock: FieldValue.increment(-si.quantity) });
-                }
-                
                 lastSale = {
                     id: sale.id,
                     date: new Date(),
