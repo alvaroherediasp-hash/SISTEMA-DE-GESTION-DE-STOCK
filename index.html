@@ -230,7 +230,7 @@
         @media print {
             body * { visibility: hidden; }
             #ticketPrintArea, #ticketPrintArea * { visibility: visible; }
-            #ticketPrintArea { position: absolute; left: 0; top: 0; width: 80mm; }
+            #ticketPrintArea { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 80mm; background: white; padding: 16px; border-radius: 8px; }
         }
 
         @media (max-width: 768px) {
