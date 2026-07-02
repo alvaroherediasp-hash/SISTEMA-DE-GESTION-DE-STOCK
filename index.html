@@ -2189,16 +2189,16 @@
                     const statusTextClass = status.class === 'out' ? '#8B3A2A' : status.class === 'low' ? '#8B6914' : '#4A5A20';
                     
                     return '<tr style="border-bottom: 1px solid #F0EDE8; transition: background 0.2s;" onmouseover="this.style.background=\'#F5F3EF\'" onmouseout="this.style.background=\'white\'">' +
-                        '<td style="padding: 1rem; font-weight: 500;">' +
+                        '<td style="padding: 1rem; text-align: center; font-weight: 500;">' +
                             '<span style="font-size: 1.2rem; margin-right: 0.5rem;">' + emoji + '</span>' +
                             name + weightTag +
                         '</td>' +
-                        '<td style="padding: 1rem; color: var(--text-light);">' + category + '</td>' +
-                        '<td style="padding: 1rem; text-align: right; font-weight: 600; color: var(--primary);">$' + price + (p.sell_by_weight ? '/' + (p.weight_unit || 'kg') : '') + '</td>' +
+                        '<td style="padding: 1rem; text-align: center; color: var(--text-light);">' + category + '</td>' +
+                        '<td style="padding: 1rem; text-align: center; font-weight: 600; color: var(--primary);">$' + price + (p.sell_by_weight ? '/' + (p.weight_unit || 'kg') : '') + '</td>' +
                         '<td style="padding: 1rem; text-align: center; font-weight: ' + (stock <= minStock ? '700' : '500') + '; color: ' + statusClass + '">' + stockDisplay + '</td>' +
                         '<td style="padding: 1rem; text-align: center; font-size: 0.85rem; color: var(--text-light);">' + minStock + '</td>' +
-                        '<td style="padding: 1rem; text-align: right; font-weight: 600; color: var(--success);">$' + Number(saleValue).toLocaleString() + '</td>' +
-                        '<td style="padding: 1rem; text-align: right; color: ' + (p.purchase_price ? 'var(--secondary)' : 'var(--text-light)') + '">$' + (purchaseValue !== '-' ? Number(purchaseValue).toLocaleString() : '-') + '</td>' +
+                        '<td style="padding: 1rem; text-align: center; font-weight: 600; color: var(--success);">$' + Number(saleValue).toLocaleString() + '</td>' +
+                        '<td style="padding: 1rem; text-align: center; color: ' + (p.purchase_price ? 'var(--secondary)' : 'var(--text-light)') + '">$' + (purchaseValue !== '-' ? Number(purchaseValue).toLocaleString() : '-') + '</td>' +
                         '<td style="padding: 1rem; text-align: center;">' +
                             '<span style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; background: ' + (status.class === 'out' ? '#F5D0C8' : status.class === 'low' ? '#F5E6C8' : '#F0EDE8') + '; color: ' + statusTextClass + '">' + status.text + '</span>' +
                         '</td>' +
