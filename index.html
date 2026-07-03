@@ -3686,6 +3686,16 @@
                     await db.collection('purchases').doc(purchase.id).update({ receipt: url });
                 }
 
+                for (const item of items) {
+                    if (item.product_id) {
+                        const prodRef = db.collection('products').doc(item.product_id);
+                        await prodRef.update({
+                            stock: FieldValue.increment(item.quantity),
+                            purchase_price: item.unit_cost
+                        });
+                    }
+                }
+
                 showToast('Compra registrada correctamente', 'success');
                 await loadPurchases();
                 await loadProducts();
