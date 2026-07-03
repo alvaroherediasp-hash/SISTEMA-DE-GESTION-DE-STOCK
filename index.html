@@ -1054,20 +1054,23 @@
 
     <!-- MODAL CARGA MASIVA DE PRODUCTOS -->
     <div class="modal" id="batchProductModal">
-        <div class="modal-content" style="max-width: 800px; max-height: 85vh; overflow-y: auto;">
-            <h2 style="color: var(--primary); margin-bottom: 1rem;">Carga Masiva de Productos</h2>
-            <div id="batchProductRows">
-                <div class="batch-product-row" style="display: grid; grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;">
-                    <input type="text" class="batch-name" placeholder="Nombre" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                    <select class="batch-category" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;"></select>
-                    <input type="number" class="batch-price" placeholder="Precio venta" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                    <input type="number" class="batch-purchase-price" placeholder="Costo" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                    <input type="number" class="batch-stock" placeholder="Stock" min="0" value="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                    <input type="number" class="batch-min-stock" placeholder="Min" min="0" value="5" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                    <button type="button" class="btn btn-sm" onclick="this.parentElement.remove()" style="background: var(--danger); color: white;">X</button>
-                </div>
+        <div class="modal-content" style="max-width: 1200px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="color: var(--primary); margin-bottom: 0.75rem;">Carga Masiva de Productos</h2>
+            <div style="display: grid; grid-template-columns: 2fr 1.2fr 0.8fr 0.8fr 0.7fr 0.7fr 0.5fr 0.7fr 0.6fr 0.7fr auto; gap: 0.4rem; margin-bottom: 0.3rem; padding: 0 0.3rem; font-size: 0.75rem; font-weight: 700; color: var(--primary); text-transform: uppercase;">
+                <span>Nombre</span>
+                <span>Categoria</span>
+                <span>Precio Vta</span>
+                <span>Costo</span>
+                <span>Stock</span>
+                <span>Stock Min</span>
+                <span>Peso?</span>
+                <span>Unidad</span>
+                <span>Icono</span>
+                <span>Codigo</span>
+                <span></span>
             </div>
-            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+            <div id="batchProductRows"></div>
+            <div style="display: flex; gap: 0.5rem; margin: 0.5rem 0;">
                 <button type="button" class="btn btn-sm" onclick="addBatchRow()" style="background: var(--secondary); color: white;">+ Agregar Fila</button>
                 <button type="button" class="btn btn-sm" onclick="addBatchRows(5)" style="background: var(--secondary); color: white;">+ 5 Filas</button>
             </div>
@@ -2760,29 +2763,29 @@
         document.getElementById('emojiPickerModal').addEventListener('click', (e) => { if (e.target.classList.contains('modal')) closeEmojiPicker(); });
         document.getElementById('batchProductModal').addEventListener('click', (e) => { if (e.target.classList.contains('modal')) closeBatchProductModal(); });
 
-        function populateBatchCategoryDropdowns() {
-            const selects = document.querySelectorAll('.batch-category');
-            selects.forEach(sel => {
-                if (sel.options.length === 0) {
-                    sel.innerHTML = '<option value="">Sin categoria</option>' + categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
-                }
-            });
-        }
-
         function addBatchRow(count = 1) {
             const container = document.getElementById('batchProductRows');
             for (let i = 0; i < count; i++) {
                 const row = document.createElement('div');
                 row.className = 'batch-product-row';
-                row.style.cssText = 'display: grid; grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;';
+                row.style.cssText = 'display: grid; grid-template-columns: 2fr 1.2fr 0.8fr 0.8fr 0.7fr 0.7fr 0.5fr 0.7fr 0.6fr 0.7fr auto; gap: 0.4rem; margin-bottom: 0.4rem; align-items: center;';
                 row.innerHTML = `
-                    <input type="text" class="batch-name" placeholder="Nombre" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                    <select class="batch-category" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;"><option value="">Sin categoria</option>${categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}</select>
-                    <input type="number" class="batch-price" placeholder="Precio venta" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                    <input type="number" class="batch-purchase-price" placeholder="Costo" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                    <input type="number" class="batch-stock" placeholder="Stock" min="0" value="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                    <input type="number" class="batch-min-stock" placeholder="Min" min="0" value="5" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                    <button type="button" class="btn btn-sm" onclick="this.parentElement.remove()" style="background: var(--danger); color: white;">X</button>
+                    <input type="text" class="batch-name" placeholder="Nombre" style="padding: 0.4rem; border: 2px solid var(--border); border-radius: 6px; font-size: 0.85rem;">
+                    <select class="batch-category" style="padding: 0.4rem; border: 2px solid var(--border); border-radius: 6px; font-size: 0.85rem;"><option value="">Sin categoria</option>${categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}</select>
+                    <input type="number" class="batch-price" placeholder="Precio" step="0.01" min="0" style="padding: 0.4rem; border: 2px solid var(--border); border-radius: 6px; font-size: 0.85rem;">
+                    <input type="number" class="batch-purchase-price" placeholder="Costo" step="0.01" min="0" style="padding: 0.4rem; border: 2px solid var(--border); border-radius: 6px; font-size: 0.85rem;">
+                    <input type="number" class="batch-stock" placeholder="Stock" min="0" value="0" style="padding: 0.4rem; border: 2px solid var(--border); border-radius: 6px; font-size: 0.85rem;">
+                    <input type="number" class="batch-min-stock" placeholder="Min" min="0" value="5" style="padding: 0.4rem; border: 2px solid var(--border); border-radius: 6px; font-size: 0.85rem;">
+                    <input type="checkbox" class="batch-weight" style="justify-self: center; width: 18px; height: 18px; cursor: pointer;">
+                    <select class="batch-weight-unit" style="padding: 0.4rem; border: 2px solid var(--border); border-radius: 6px; font-size: 0.85rem;">
+                        <option value="kg">kg</option>
+                        <option value="100g">100g</option>
+                        <option value="500g">500g</option>
+                        <option value="lb">lb</option>
+                    </select>
+                    <input type="text" class="batch-emoji" placeholder="😊" maxlength="4" style="padding: 0.4rem; border: 2px solid var(--border); border-radius: 6px; font-size: 0.85rem; text-align: center;">
+                    <input type="text" class="batch-barcode" placeholder="Barras" style="padding: 0.4rem; border: 2px solid var(--border); border-radius: 6px; font-size: 0.85rem;">
+                    <button type="button" class="btn btn-sm" onclick="this.parentElement.remove()" style="background: var(--danger); color: white; padding: 0.4rem 0.6rem; font-size: 0.8rem;">X</button>
                 `;
                 container.appendChild(row);
             }
@@ -2809,6 +2812,10 @@
                 const purchasePrice = parseFloat(row.querySelector('.batch-purchase-price').value) || null;
                 const stock = parseInt(row.querySelector('.batch-stock').value) || 0;
                 const minStock = parseInt(row.querySelector('.batch-min-stock').value) || 5;
+                const sellByWeight = row.querySelector('.batch-weight').checked;
+                const weightUnit = row.querySelector('.batch-weight-unit').value;
+                const emoji = row.querySelector('.batch-emoji').value.trim() || '📦';
+                const barcode = row.querySelector('.batch-barcode').value.trim() || null;
                 if (name && price > 0) {
                     products.push({
                         name,
@@ -2818,8 +2825,10 @@
                         purchase_price: purchasePrice,
                         stock,
                         min_stock: minStock,
-                        emoji: '📦',
-                        barcode: null
+                        sell_by_weight: sellByWeight,
+                        weight_unit: weightUnit,
+                        emoji,
+                        barcode
                     });
                 }
             });
