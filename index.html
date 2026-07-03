@@ -1538,7 +1538,9 @@
                 }
                 case 'POST': {
                     const data = body || {};
-                    if (!data.createdAt) data.createdAt = new Date().toISOString();
+                    const now = new Date().toISOString();
+                    if (!data.createdAt) data.createdAt = now;
+                    if (!data.created_at) data.created_at = now;
                     const docRef = await db.collection(collection).add(data);
                     return { id: docRef.id, ...data };
                 }
@@ -3471,15 +3473,18 @@
                     return;
                 }
                 
-                container.innerHTML = purchases.map(p => `
+                container.innerHTML = purchases.map(p => {
+                    const pDate = p.created_at || p.createdAt || '';
+                    const pTotal = p.total || (p.items ? p.items.reduce((s, i) => s + (i.subtotal || i.quantity * i.unit_cost || 0), 0) : 0);
+                    return `
                     <div class="purchase-card" style="margin-bottom: 1rem; border: 2px solid #022841; border-radius: 12px; overflow: hidden;">
                         <div style="background: #022841; color: white; padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center;">
                             <div>
                                 <div style="font-weight: 700;">Compra #${p.id}</div>
-                                <div style="font-size: 0.8rem; opacity: 0.9;">${new Date(p.created_at).toLocaleString('es-AR')}</div>
+                                <div style="font-size: 0.8rem; opacity: 0.9;">${pDate ? new Date(pDate).toLocaleString('es-AR') : 'Fecha no disponible'}</div>
                             </div>
                             <div style="text-align: right;">
-                                <div style="font-size: 1.5rem; font-weight: 700;">$${Number(p.total).toLocaleString()}</div>
+                                <div style="font-size: 1.5rem; font-weight: 700;">$${Number(pTotal).toLocaleString()}</div>
                                 <div style="font-size: 0.75rem; opacity: 0.9;">${p.items ? p.items.length : 0} items</div>
                             </div>
                         </div>
@@ -3490,19 +3495,21 @@
                             ${p.notes ? `<div style="font-size: 0.8rem; color: #8B6914; background: #F5E6C8; padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem;"><strong>Notas:</strong> ${p.notes}</div>` : ''}
                         </div>
                         <div style="max-height: 150px; overflow-y: auto;">
-                            ${p.items && p.items.length > 0 ? p.items.map((i, idx) => `
+                            ${p.items && p.items.length > 0 ? p.items.map((i, idx) => {
+                                const iSubtotal = i.subtotal || (i.quantity * i.unit_cost || 0);
+                                return `
                                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1rem; ${idx < p.items.length - 1 ? 'border-bottom: 1px solid #F0EDE8;' : ''} background: white;">
                                     <div style="flex: 1;">
                                         <div style="font-weight: 500; font-size: 0.9rem;">${i.product_name || 'Producto'}</div>
                                         <div style="font-size: 0.75rem; color: var(--text-light);">${i.quantity} x $${Number(i.unit_cost).toLocaleString()}</div>
                                     </div>
-                                    <div style="font-weight: 600; color: #022841; font-size: 0.9rem;">$${Number(i.subtotal).toLocaleString()}</div>
+                                    <div style="font-weight: 600; color: #022841; font-size: 0.9rem;">$${Number(iSubtotal).toLocaleString()}</div>
                                 </div>
-                            `).join('') : '<div style="padding: 1rem; text-align: center; color: var(--text-light);">Sin items</div>'}
+                            `}).join('') : '<div style="padding: 1rem; text-align: center; color: var(--text-light);">Sin items</div>'}
                         </div>
                         ${p.receipt_image ? `<div style="padding: 0.75rem 1rem; border-top: 1px solid #E5DDD3; background: white;"><button class="btn btn-sm" style="background: var(--secondary); color: white;" onclick="viewReceipt('${p.id}')">Ver Comprobante</button></div>` : ''}
                     </div>
-                `).join('');
+                `}).join('');
             } catch (e) { console.error('Error cargando compras:', e); }
         }
 
