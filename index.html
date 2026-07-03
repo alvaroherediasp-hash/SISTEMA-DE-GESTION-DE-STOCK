@@ -1766,7 +1766,7 @@
                 
                 if (selectedMainCategory && !selectedSubcategory) {
                     const mainCatIds = [selectedMainCategory.id, ...subCategories.filter(s => s.parent_id == selectedMainCategory.id).map(s => s.id)];
-                    products = allProducts.filter(p => mainCatIds.includes(parseInt(p.category_id)));
+                    products = allProducts.filter(p => mainCatIds.includes(String(p.category_id)));
                 } else {
                     products = allProducts;
                 }
