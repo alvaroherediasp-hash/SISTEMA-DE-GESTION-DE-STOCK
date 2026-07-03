@@ -1199,12 +1199,13 @@
                 <div class="form-group">
                     <label>Productos</label>
                     <div id="purchaseItems">
-                        <div class="purchase-item-row" style="display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;">
-                            <select class="purchase-product" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                        <div class="purchase-item-row" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;">
+                            <select class="purchase-product" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;" onchange="onPurchaseProductChange(this)">
                                 <option value="">Seleccionar producto...</option>
                             </select>
-                            <input type="number" class="purchase-qty" placeholder="Cantidad" min="1" value="1" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
-                            <input type="number" class="purchase-cost" placeholder="Costo unitario" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                            <input type="number" class="purchase-qty" placeholder="Cantidad" min="1" value="1" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;" oninput="calculatePurchaseTotal()">
+                            <input type="number" class="purchase-cost" placeholder="Costo unitario" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;" oninput="calculatePurchaseTotal()">
+                            <span class="purchase-subtotal" style="font-weight: 600; color: var(--primary); text-align: center;">$0</span>
                             <button type="button" class="btn btn-sm" onclick="addPurchaseItemRow()" style="background: var(--success); color: white;">+</button>
                         </div>
                     </div>
@@ -3716,17 +3717,19 @@
             const container = document.getElementById('purchaseItems');
             const row = document.createElement('div');
             row.className = 'purchase-item-row';
-            row.style.cssText = 'display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;';
+            row.style.cssText = 'display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;';
             row.innerHTML = `
-                <select class="purchase-product" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                <select class="purchase-product" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;" onchange="onPurchaseProductChange(this)">
                     <option value="">Producto no listado</option>
                     ${products.map(p => `<option value="${p.id}" data-name="${p.name}">${p.emoji || ''} ${p.name}</option>`).join('')}
                 </select>
-                <input type="number" class="purchase-qty" placeholder="Cantidad" min="1" value="1" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;" onchange="calculatePurchaseTotal()">
-                <input type="number" class="purchase-cost" placeholder="Costo" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;" onchange="calculatePurchaseTotal()">
+                <input type="number" class="purchase-qty" placeholder="Cantidad" min="1" value="1" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;" oninput="calculatePurchaseTotal()">
+                <input type="number" class="purchase-cost" placeholder="Costo" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;" oninput="calculatePurchaseTotal()">
+                <span class="purchase-subtotal" style="font-weight: 600; color: var(--primary); text-align: center;">$0</span>
                 <button type="button" class="btn btn-sm" onclick="this.parentElement.remove(); calculatePurchaseTotal();" style="background: var(--danger); color: white;">X</button>
             `;
             container.appendChild(row);
+            populateProductSelects();
         }
 
         function calculatePurchaseTotal() {
@@ -3734,9 +3737,25 @@
             document.querySelectorAll('.purchase-item-row').forEach(row => {
                 const qty = parseFloat(row.querySelector('.purchase-qty').value) || 0;
                 const cost = parseFloat(row.querySelector('.purchase-cost').value) || 0;
-                total += qty * cost;
+                const subtotal = qty * cost;
+                const subtotalEl = row.querySelector('.purchase-subtotal');
+                if (subtotalEl) subtotalEl.textContent = '$' + subtotal.toLocaleString();
+                total += subtotal;
             });
             document.getElementById('purchaseTotal').textContent = '$' + total.toLocaleString();
+        }
+
+        function onPurchaseProductChange(select) {
+            const row = select.closest('.purchase-item-row');
+            const costInput = row.querySelector('.purchase-cost');
+            const productId = select.value;
+            if (productId) {
+                const p = products.find(x => x.id == productId);
+                if (p && p.purchase_price) costInput.value = p.purchase_price;
+            } else {
+                costInput.value = '';
+            }
+            calculatePurchaseTotal();
         }
 
         function previewReceipt(input) {
