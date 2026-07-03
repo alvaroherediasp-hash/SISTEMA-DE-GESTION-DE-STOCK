@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#022841">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Despensa BelÃƒÆ’Ã‚Â©n">
+    <meta name="apple-mobile-web-app-title" content="Despensa BelÃ©n">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
@@ -482,7 +482,7 @@
 }
 
 
-/* Celulares pequeÃƒÆ’Ã‚Â±os */
+/* Celulares pequeÃ±os */
 @media (max-width:480px){
 
     .products-grid{
@@ -517,7 +517,7 @@
 }
 
         /* ================================
-           ESTADÃƒÆ’Ã‚ÂSTICAS
+           ESTADÃSTICAS
         ================================ */
         .stat-filters {
             display: flex;
@@ -708,7 +708,7 @@
                 <div class="stat-card yellow"><h3>Stock Bajo</h3><div class="value" id="statLow">0</div></div>
                 <div class="stat-card red"><h3>Sin Stock</h3><div class="value" id="statOut">0</div></div>
                 <div class="stat-card green"><h3>Ventas Hoy</h3><div class="value" id="statTodaySales">$0</div></div>
-                <div class="stat-card" style="background: #EDE5D8; border-left: 4px solid #022841;"><h3 style="color: #022841;">InversiÃƒÆ’Ã‚Â³n Total</h3><div class="value" id="statInvestment" style="color: #022841;">$0</div></div>
+                <div class="stat-card" style="background: #EDE5D8; border-left: 4px solid #022841;"><h3 style="color: #022841;">InversiÃ³n Total</h3><div class="value" id="statInvestment" style="color: #022841;">$0</div></div>
                 <div class="stat-card" style="background: #F0EDE8; border-left: 4px solid #5C6B2E;"><h3 style="color: #5C6B2E;">Ganancia Potencial</h3><div class="value" id="statProfit" style="color: #5C6B2E;">$0</div></div>
             </div>
 
@@ -728,7 +728,7 @@
             
             <div class="barcode-result" id="barcodeResult">
                 <div class="barcode-result-info">
-                    <div class="barcode-result-emoji" id="barcodeEmoji" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦</div>
+                    <div class="barcode-result-emoji" id="barcodeEmoji" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">ðŸ“¦</div>
                     <div>
                         <h4 id="barcodeName">-</h4>
                         <div class="barcode-result-price" id="barcodePrice">$0</div>
@@ -777,15 +777,15 @@
             </div>
             
             <div class="search-bar" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-                <input type="text" id="searchStock" placeholder="ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â Buscar en stock..." oninput="loadStockTable()" style="flex: 1; min-width: 200px; padding: 0.7rem 1rem; border: 2px solid #E5DDD3; border-radius: 8px; font-size: 0.95rem;">
+                <input type="text" id="searchStock" placeholder="ðŸ” Buscar en stock..." oninput="loadStockTable()" style="flex: 1; min-width: 200px; padding: 0.7rem 1rem; border: 2px solid #E5DDD3; border-radius: 8px; font-size: 0.95rem;">
                 <button class="btn btn-sm" onclick="filterStock('all')" id="filterAll" style="background: var(--primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">Todos</button>
                 <button class="btn btn-sm" onclick="filterStock('out')" id="filterOut" style="background: var(--danger); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">Sin Stock</button>
                 <button class="btn btn-sm" onclick="filterStock('low')" id="filterLow" style="background: var(--warning); color: #1e293b; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">Stock Bajo</button>
-                <button class="btn btn-sm" onclick="exportLowStockExcel()" style="background: #5C6B2E; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¥ Exportar Stock Bajo</button>
-                <button class="btn btn-sm" onclick="exportLowStockPDF()" style="background: #C1583E; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Å¾ PDF</button>
-                <button class="btn btn-sm" onclick="exportAllStockExcel()" style="background: #022841; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¥ Exportar Todo</button>
-                <button class="btn btn-sm" onclick="exportAllStockPDF()" style="background: #C4943A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Å¾ PDF Todo</button>
-                <button class="btn btn-sm" onclick="openPriceModal()" style="background: #022841; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â° Ajustar Precios</button>
+                <button class="btn btn-sm" onclick="exportLowStockExcel()" style="background: #5C6B2E; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">ðŸ“¥ Exportar Stock Bajo</button>
+                <button class="btn btn-sm" onclick="exportLowStockPDF()" style="background: #C1583E; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">ðŸ“„ PDF</button>
+                <button class="btn btn-sm" onclick="exportAllStockExcel()" style="background: #022841; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">ðŸ“¥ Exportar Todo</button>
+                <button class="btn btn-sm" onclick="exportAllStockPDF()" style="background: #C4943A; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">ðŸ“„ PDF Todo</button>
+                <button class="btn btn-sm" onclick="openPriceModal()" style="background: #022841; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600;">ðŸ’° Ajustar Precios</button>
             </div>
             
             <div id="stockAlerts" style="margin-bottom: 1.5rem;"></div>
@@ -844,10 +844,10 @@
 <!-- ESTADISTICAS TAB -->
         <div id="estadisticas" class="tab-content">
             <div class="section-header" style="flex-direction: column; align-items: flex-start; gap: 0.75rem;">
-                <h2>EstadÃƒÆ’Ã‚Â­sticas y Reportes</h2>
+                <h2>EstadÃ­sticas y Reportes</h2>
                 <div class="stat-filters">
                     <select id="statYear" onchange="loadEstadisticas()">
-                        <option value="">Todos los aÃƒÆ’Ã‚Â±os</option>
+                        <option value="">Todos los aÃ±os</option>
                     </select>
                     <select id="statMonth" onchange="loadEstadisticas()">
                         <option value="">Todos los meses</option>
@@ -889,22 +889,22 @@
 
             <div class="stat-panels-grid">
                 <div class="table-container stat-panel">
-                    <div class="stat-panel-title" style="background: var(--primary);">ÃƒÂ°Ã…Â¸Ã‚ÂÃ¢â‚¬Â  Productos MÃƒÆ’Ã‚Â¡s Vendidos</div>
+                    <div class="stat-panel-title" style="background: var(--primary);">ðŸ† Productos MÃ¡s Vendidos</div>
                     <div id="topProducts" class="stat-panel-body"></div>
                 </div>
                 <div class="table-container stat-panel">
-                    <div class="stat-panel-title" style="background: var(--secondary);">ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Å¡ Ventas por CategorÃƒÆ’Ã‚Â­a</div>
+                    <div class="stat-panel-title" style="background: var(--secondary);">ðŸ“‚ Ventas por CategorÃ­a</div>
                     <div id="salesByCategory" class="stat-panel-body"></div>
                 </div>
             </div>
 
             <div class="stat-panels-grid">
                 <div class="table-container stat-panel">
-                    <div class="stat-panel-title" style="background: var(--danger);">ÃƒÂ¢Ã…Â¡Ã‚Â ÃƒÂ¯Ã‚Â¸Ã‚Â Stock Bajo</div>
+                    <div class="stat-panel-title" style="background: var(--danger);">âš ï¸ Stock Bajo</div>
                     <div id="lowStockProducts" class="stat-panel-body"></div>
                 </div>
                 <div class="table-container stat-panel">
-                    <div class="stat-panel-title" style="background: var(--warning); color: #1e293b;">ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â¦ Ventas ÃƒÆ’Ã…Â¡ltimos 7 DÃƒÆ’Ã‚Â­as</div>
+                    <div class="stat-panel-title" style="background: var(--warning); color: #1e293b;">ðŸ“… Ventas Ãšltimos 7 DÃ­as</div>
                     <div id="weeklySales" class="stat-panel-body"></div>
                 </div>
             </div>
@@ -994,7 +994,7 @@
                 </div>
                 <div class="form-group">
                     <label>Precio de Compra ($) - Opcional</label>
-                    <input type="number" id="productPurchasePrice" step="0.01" min="0" placeholder="Cuanto me costÃƒÆ’Ã‚Â³ el producto">
+                    <input type="number" id="productPurchasePrice" step="0.01" min="0" placeholder="Cuanto me costÃ³ el producto">
                 </div>
                 <div class="form-group">
                     <label>
@@ -1022,9 +1022,9 @@
                 <div class="form-group">
                     <label>Icono</label>
                     <div style="display: flex; gap: 0.5rem;">
-                        <input type="text" id="productEmoji" placeholder="ÃƒÂ°Ã…Â¸Ã‹Å“Ã…Â " maxlength="4" style="flex: 1;">
+                        <input type="text" id="productEmoji" placeholder="ðŸ˜Š" maxlength="4" style="flex: 1;">
                         <button type="button" class="btn btn-sm" onclick="openEmojiPicker()" style="background: var(--secondary); color: white; padding: 0.5rem 1rem;">
-                            ÃƒÂ°Ã…Â¸Ã‹Å“Ã¢â€šÂ¬ Ver Iconos
+                            ðŸ˜€ Ver Iconos
                         </button>
                     </div>
                 </div>
@@ -1037,7 +1037,7 @@
                     <div id="currentImagePreview" style="margin-bottom: 0.5rem;"></div>
                     <input type="file" id="productImage" accept="image/*" onchange="previewImage(this)" style="display: none;">
                     <button type="button" class="btn btn-sm" onclick="document.getElementById('productImage').click()" style="background: var(--secondary); color: white;">
-                        ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â· Seleccionar Imagen
+                        ðŸ“· Seleccionar Imagen
                     </button>
                     <button type="button" class="btn btn-sm" id="removeImageBtn" onclick="removeProductImage()" style="background: var(--danger); color: white; display: none; margin-left: 0.5rem;">
                         Eliminar Imagen
@@ -1135,7 +1135,7 @@
                 </div>
                 <div class="form-group">
                     <label>Emoji (alternativo si no hay imagen)</label>
-                    <input type="text" id="categoryEmoji" placeholder="Ej: ÃƒÂ°Ã…Â¸Ã‚ÂÃ…Â½" maxlength="10">
+                    <input type="text" id="categoryEmoji" placeholder="Ej: ðŸŽ" maxlength="10">
                 </div>
                 <div class="form-group">
                     <label>Categoria Padre (opcional)</label>
@@ -1207,7 +1207,7 @@
                         <img id="receiptImage" style="max-width: 200px; max-height: 150px; border-radius: 8px; border: 2px solid var(--border);">
                     </div>
                     <button type="button" class="btn btn-sm" onclick="document.getElementById('purchaseReceipt').click()" style="background: var(--secondary); color: white;">
-                        ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â· Subir Foto del Recibo
+                        ðŸ“· Subir Foto del Recibo
                     </button>
                 </div>
                 <div class="form-group">
@@ -1262,7 +1262,7 @@
                     </div>
                     <div class="form-group" style="width: 70px;">
                         <label>Icono</label>
-                        <input type="text" id="comboEmoji" placeholder="ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â" maxlength="4" style="text-align: center; font-size: 1.5rem;">
+                        <input type="text" id="comboEmoji" placeholder="ðŸŽ" maxlength="4" style="text-align: center; font-size: 1.5rem;">
                     </div>
                 </div>
                 <div class="form-group">
@@ -1303,7 +1303,7 @@
         <!-- MODAL AJUSTE DE PRECIOS -->
         <div class="modal" id="priceModal">
             <div class="modal-content" style="max-width: 600px; max-height: 85vh; overflow-y: auto;">
-                <h2 style="color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; margin-bottom: 1rem;">ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â° Ajustar Precios</h2>
+                <h2 style="color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; margin-bottom: 1rem;">ðŸ’° Ajustar Precios</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
                     <div class="form-group" style="margin-bottom: 0;">
                         <label>Tipo</label>
@@ -1376,7 +1376,7 @@
         <div class="ticket-content">
             <div id="ticketPrintArea">
                 <div class="ticket-header">
-                    <h2>ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ¢â‚¬â„¢ DESPENSA BELEN</h2>
+                    <h2>ðŸ›’ DESPENSA BELEN</h2>
                     <p id="ticketDate">Fecha: -</p>
                     <p id="ticketNumber">Ticket #: -</p>
                     <p id="ticketPaymentMethod" style="font-weight: 600; color: var(--primary);">Pago: Efectivo</p>
@@ -1500,7 +1500,7 @@
                     const dateVal = data.created_at || data.createdAt || new Date().toISOString();
                     return { id: d.id, ...data, created_at: dateVal };
                 });
-                // Ordenar por fecha descendente (mÃƒÆ’Ã‚Â¡s reciente primero)
+                // Ordenar por fecha descendente (mÃ¡s reciente primero)
                 results.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
                 return results;
             }
@@ -1625,11 +1625,11 @@
                 subCategories = categories.filter(c => c.parent_id);
                 
                 const grid = document.getElementById('categoriesGrid');
-                grid.innerHTML = `<button class="category-btn active" onclick="selectCategory('all')"><span>ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ¢â‚¬â„¢</span><span>Todos</span></button>` +
+                grid.innerHTML = `<button class="category-btn active" onclick="selectCategory('all')"><span>ðŸ›’</span><span>Todos</span></button>` +
                     mainCategories.map(c => {
                         const hasSubcats = subCategories.some(s => s.parent_id === c.id);
                         const icon = c.image ? `<img src="${c.image}" style="width: 40px; height: 40px; object-fit: contain; border-radius: 8px;">` : `<span style="font-size: 1.8rem;">${c.emoji}</span>`;
-                        return `<button class="category-btn" onclick="selectCategory('${c.id}', '${c.name}')" data-cat-id="${c.id}"><span>${icon}</span><span>${c.name}</span>${hasSubcats ? '<span style="font-size:0.6rem;opacity:0.7;">ÃƒÂ¢Ã¢â‚¬â€œÃ‚Â¼</span>' : ''}</button>`;
+                        return `<button class="category-btn" onclick="selectCategory('${c.id}', '${c.name}')" data-cat-id="${c.id}"><span>${icon}</span><span>${c.name}</span>${hasSubcats ? '<span style="font-size:0.6rem;opacity:0.7;">â–¼</span>' : ''}</button>`;
                     }).join('');
                 
                 document.getElementById('productCategory').innerHTML = mainCategories.map(c => {
@@ -1664,12 +1664,12 @@
                 selectedSubcategory = null;
                 
                 const mainCat = mainCategories.find(c => c.id == catId);
-                const mainIcon = mainCat?.image ? `<img src="${mainCat.image}" style="width: 40px; height: 40px; object-fit: contain; border-radius: 8px;">` : `<span style="font-size: 1.8rem;">${mainCat?.emoji || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦'}</span>`;
+                const mainIcon = mainCat?.image ? `<img src="${mainCat.image}" style="width: 40px; height: 40px; object-fit: contain; border-radius: 8px;">` : `<span style="font-size: 1.8rem;">${mainCat?.emoji || 'ðŸ“¦'}</span>`;
                 
                 const subGrid = document.getElementById('subcategoriesGrid');
                 subGrid.innerHTML = `
                     <div class="subcategory-back" onclick="backToMainCategories()">
-                        <span style="font-size: 1.5rem;">ÃƒÂ¢Ã¢â‚¬Â Ã‚Â</span>
+                        <span style="font-size: 1.5rem;">â†</span>
                         <span>Volver</span>
                     </div>
                     <button class="category-btn" onclick="selectSubcategory('${catId}', 'all', '${catName} (Todos)')" style="border-color: var(--primary);">
@@ -1678,7 +1678,7 @@
                         <span style="font-size: 0.6rem; opacity: 0.7;">Ver Todo</span>
                     </button>
                     ${subcats.map(s => {
-                        const subIcon = s.image ? `<img src="${s.image}" style="width: 30px; height: 30px; object-fit: contain; border-radius: 6px;">` : `<span style="font-size: 1.5rem;">${s.emoji || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦'}</span>`;
+                        const subIcon = s.image ? `<img src="${s.image}" style="width: 30px; height: 30px; object-fit: contain; border-radius: 6px;">` : `<span style="font-size: 1.5rem;">${s.emoji || 'ðŸ“¦'}</span>`;
                         return `
                             <button class="subcategory-btn" onclick="selectSubcategory('${catId}', '${s.id}', '${s.name}')">
                                 <span>${subIcon}</span>
@@ -1854,7 +1854,7 @@
                 let diff = mode === 'percentage' ? current * value / 100 : value;
                 if (type === 'decrease') diff = -diff;
                 const nuevo = Math.max(0, current + diff);
-                html += `<span style="font-size: 0.8rem;">${p.emoji || ''} ${p.name}: <span style="text-decoration: line-through; color: var(--text-light);">$${current.toLocaleString()}</span> ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ <span style="color: var(--primary); font-weight: 600;">$${nuevo.toLocaleString()}</span></span><br>`;
+                html += `<span style="font-size: 0.8rem;">${p.emoji || ''} ${p.name}: <span style="text-decoration: line-through; color: var(--text-light);">$${current.toLocaleString()}</span> â†’ <span style="color: var(--primary); font-weight: 600;">$${nuevo.toLocaleString()}</span></span><br>`;
             });
             if (selected.length > 5) html += `<span style="font-size: 0.8rem; color: var(--text-light);">...y ${selected.length - 5} mas</span>`;
             preview.innerHTML = html;
@@ -1894,7 +1894,7 @@
             grid.innerHTML = products.map(p => `
                 <div class="product-card">
                     <div class="product-image" style="${p.image ? 'background: white;' : ''}">
-                        ${p.image ? `<img src="${p.image}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" onerror="this.style.display='none'; this.parentElement.innerHTML='${p.emoji || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦'}'">` : (p.emoji || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦')}
+                        ${p.image ? `<img src="${p.image}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" onerror="this.style.display='none'; this.parentElement.innerHTML='${p.emoji || 'ðŸ“¦'}'">` : (p.emoji || 'ðŸ“¦')}
                     </div>
                     <div class="product-info">
                         <div class="product-name">${p.name}</div>
@@ -1955,7 +1955,7 @@
                 if (product.image) {
                     emojiEl.innerHTML = `<img src="${product.image}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" onerror="this.style.display='none'">`;
                 } else {
-                    emojiEl.textContent = product.emoji || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦';
+                    emojiEl.textContent = product.emoji || 'ðŸ“¦';
                 }
                 document.getElementById('barcodeName').textContent = product.name;
                 document.getElementById('barcodePrice').textContent = '$' + Number(product.price).toLocaleString();
@@ -2221,7 +2221,7 @@
                     const saleValue = (parseFloat(p.price) * parseInt(p.stock)).toFixed(2);
                     const purchaseValue = p.purchase_price ? (parseFloat(p.purchase_price) * parseInt(p.stock)).toFixed(2) : '-';
                     const price = Number(p.price).toLocaleString();
-                    const emoji = p.emoji || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦';
+                    const emoji = p.emoji || 'ðŸ“¦';
                     const name = p.name;
                     const catName = p.category_name || (p.category_id ? (categories.find(c => c.id == p.category_id)?.name) : null) || '-';
                     const category = catName;
@@ -2247,8 +2247,8 @@
                             '<span style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; background: ' + (status.class === 'out' ? '#F5D0C8' : status.class === 'low' ? '#F5E6C8' : '#F0EDE8') + '; color: ' + statusTextClass + '">' + status.text + '</span>' +
                         '</td>' +
                         '<td style="padding: 1rem; text-align: center;">' +
-                            '<button class="btn-icon" style="background: #D4A843; color: white; width: 32px; height: 32px; border-radius: 6px; border: none; cursor: pointer; margin-right: 0.5rem; font-size: 0.9rem;" onclick="editProduct(\'' + p.id + '\')">ÃƒÂ¢Ã…â€œÃ‚Â</button>' +
-                            '<button class="btn-icon" style="background: #C1583E; color: white; width: 32px; height: 32px; border-radius: 6px; border: none; cursor: pointer; font-size: 0.9rem;" onclick="deleteProduct(\'' + p.id + '\')">ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã¢â‚¬Ëœ</button>' +
+                            '<button class="btn-icon" style="background: #D4A843; color: white; width: 32px; height: 32px; border-radius: 6px; border: none; cursor: pointer; margin-right: 0.5rem; font-size: 0.9rem;" onclick="editProduct(\'' + p.id + '\')">âœ</button>' +
+                            '<button class="btn-icon" style="background: #C1583E; color: white; width: 32px; height: 32px; border-radius: 6px; border: none; cursor: pointer; font-size: 0.9rem;" onclick="deleteProduct(\'' + p.id + '\')">ðŸ—‘</button>' +
                         '</td>' +
                     '</tr>';
                 }).join('');
@@ -2269,7 +2269,7 @@
             for (const item of cart) {
                 if (item.is_combo) {
                     html += '<div class="cart-item" style="background: #FDF8F0; border-left: 3px solid #D4A843;">' +
-                        '<div style="font-size: 2rem;">' + (item.emoji || 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â') + '</div>' +
+                        '<div style="font-size: 2rem;">' + (item.emoji || 'ðŸŽ') + '</div>' +
                         '<div class="cart-item-info">' +
                             '<div class="cart-item-name" style="color: #8B6914;">' + item.name + ' <span style="font-size: 0.7rem; background: #F5E6C8; padding: 0.1rem 0.3rem; border-radius: 3px;">COMBO</span></div>' +
                             '<div class="cart-item-price">' +
@@ -2278,13 +2278,13 @@
                             '</div>' +
                         '</div>' +
                         '<div class="cart-item-controls">' +
-                            '<button class="btn-icon btn-qty" onclick="removeFromCart(\'' + item.id + '\')">ÃƒÆ’Ã¢â‚¬â€</button>' +
+                            '<button class="btn-icon btn-qty" onclick="removeFromCart(\'' + item.id + '\')">Ã—</button>' +
                         '</div>' +
                     '</div>';
                 } else {
                     const p = products.find(x => x.id == item.product_id);
                     const name = p?.name || 'Eliminado';
-                    const emoji = p?.emoji || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦';
+                    const emoji = p?.emoji || 'ðŸ“¦';
                     const price = p?.price || 0;
                     
                     if (item.is_weight) {
@@ -2298,7 +2298,7 @@
                             '</div>' +
                             '<div class="cart-item-controls">' +
                                 '<span style="font-weight: 600; min-width: 60px; text-align: center;">' + weightDisplay + '</span>' +
-                                '<button class="btn-icon btn-qty" onclick="removeFromCart(\'' + item.product_id + '_weight\')">ÃƒÆ’Ã¢â‚¬â€</button>' +
+                                '<button class="btn-icon btn-qty" onclick="removeFromCart(\'' + item.product_id + '_weight\')">Ã—</button>' +
                             '</div>' +
                         '</div>';
                     } else {
@@ -2413,7 +2413,7 @@
             const weight = parseFloat(document.getElementById('weightInput').value) || 0;
             
             if (weight <= 0) {
-                showToast('Ingresa un peso vÃƒÆ’Ã‚Â¡ildo', 'error');
+                showToast('Ingresa un peso vÃ¡ildo', 'error');
                 return;
             }
             
@@ -2510,7 +2510,7 @@
                 await loadStats();
                 toggleCart();
                 showTicketModal();
-                showToast('Ãƒâ€šÃ‚Â¡Venta registrada!', 'success');
+                showToast('Â¡Venta registrada!', 'success');
             } catch (e) { console.error('Error en checkout:', e); showToast('Error al registrar venta: ' + e.message, 'error'); }
         }
 
@@ -2673,12 +2673,12 @@
         function closeProductModal() { document.getElementById('productModal').classList.remove('active'); editingProductId = null; document.getElementById('productImage').value = ''; }
 
         const emojiCategories = {
-            food: ['ÃƒÂ°Ã…Â¸Ã‚ÂÃ…Â¾', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã¢â‚¬â€œ', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã¢â‚¬Â¡', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã…Â¾', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã‹â€ ', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã¢â€šÂ¬', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã…Â¡', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â³', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã¢â‚¬Å“', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã‚Â©', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ¢â‚¬â€', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ…Â¸', 'ÃƒÂ°Ã…Â¸Ã‚Â¦Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ¢â‚¬Â¢', 'ÃƒÂ°Ã…Â¸Ã…â€™Ã‚Â®', 'ÃƒÂ°Ã…Â¸Ã…â€™Ã‚Â¯', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã¢â€žÂ¢', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ¢â‚¬Â', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ…Â¸', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã‚Â¨', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ…â€œ', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â²', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ¢â‚¬Âº', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â£', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â±', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã¢â‚¬â€', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã‚Âª', 'ÃƒÂ°Ã…Â¸Ã‚Â«Ã¢â‚¬Â', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¤', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã¢â‚¬Å¡', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â°', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â®', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â©', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Âª', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â«', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¬', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â­', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¿', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã¢â‚¬Å¡', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã‚Â«', 'ÃƒÂ°Ã…Â¸Ã‚Â«Ã¢â€žÂ¢', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¯', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Âµ', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã¢â‚¬Âº', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¼', 'ÃƒÂ¢Ã‹Å“Ã¢â‚¬Â¢', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã†â€™', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã‚Â¤', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Âº', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â»', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã¢â‚¬Å¡', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â·', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã†â€™', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¸', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¹', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã¢â‚¬Â°', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¾', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã…Â '],
-            drinks: ['ÃƒÂ¢Ã‹Å“Ã¢â‚¬Â¢', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Âµ', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã‚Â¤', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã†â€™', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã¢â‚¬Âº', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¼', 'ÃƒÂ°Ã…Â¸Ã‚Â«Ã¢â‚¬â€œ', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¶', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Âº', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â»', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â·', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã¢â‚¬Å¡', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã†â€™', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¸', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¹', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã¢â‚¬Â°', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¾', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã…Â ', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã‚Â¤', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã¢â‚¬Â¹', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Âµ', 'ÃƒÂ¢Ã‹Å“Ã¢â‚¬Â¢', 'ÃƒÂ°Ã…Â¸Ã‚Â«Ã¢â‚¬Â¢', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã¢â‚¬Âº', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¼', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã†â€™', 'ÃƒÂ°Ã…Â¸Ã‚Â¥Ã‚Â¤', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â¶', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Âº', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â»', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â·'],
-            shop: ['ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ¢â‚¬â„¢', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ¢â‚¬â„¢', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Âº', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ¢â‚¬â„¢', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â³', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â°', 'ÃƒÂ°Ã…Â¸Ã‚ÂªÃ¢â€žÂ¢', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Âµ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â´', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â¶', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â·', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â¸', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â¹', 'ÃƒÂ¢Ã…â€œÃ‚Â¨', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â·ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â§', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â®', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¯', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¬', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â­', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â¹', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Å¡', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã¢â‚¬Å¡ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â¦', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã¢â‚¬â„¢ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã¢â‚¬Å“ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â¡', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‹â€ ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â°', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â¹', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â½', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ¢â‚¬Â¡ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ¢Ã…â€œÃ¢â‚¬Å¡ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ…Â ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ¢â‚¬Â¹ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ¢Ã…â€œÃ‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ…Â½', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â'],
-            office: ['ÃƒÂ¢Ã…â€œÃ‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â½', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ¢Ã…â€œÃ¢â‚¬Å¡ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ…Â ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ¢â‚¬Â¹ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ¢Ã…â€œÃ¢â‚¬â„¢ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ…â€™ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Å¾', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã†â€™', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€œ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Ëœ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â¹', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã¢â‚¬Å¡ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Å¡', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã†â€™ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã¢â‚¬Å¾ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã‚Â³ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â°', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Å“', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â„¢', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Â¢', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‹Å“', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â€žÂ¢', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â¡', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€œ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€œ', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â·ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ¢â‚¬Â¡ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â½', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ…Â½', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â¼', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â³', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â§', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¨', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â©', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â®', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Âª', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â«', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¬', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â­'],
-            tech: ['ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â»', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ‚Â¥ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ‚Â¨ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ‚Â±ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ‚Â²ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â½', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â¾', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â¿', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â€šÂ¬', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â±', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â²', 'ÃƒÂ¢Ã‹Å“Ã…Â½ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â¾', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â¸', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Âº', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â»', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¥', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã…Â¾ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â½ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â·', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¸', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¹', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¼', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬Â¹', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ…â€™', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â¡', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¦', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¢Ã‚Â¯ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Âµ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â´', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â¶', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â·', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â°', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â³', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã…Â½', 'ÃƒÂ¢Ã…Â¡Ã¢â‚¬â€œÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â§', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¨', 'ÃƒÂ¢Ã…Â¡Ã¢â‚¬â„¢ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ‚Â ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ¢Ã¢â‚¬ÂºÃ‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â©', 'ÃƒÂ¢Ã…Â¡Ã¢â€žÂ¢ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¡', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¢', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬Â¢', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‹â€ ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬Â°', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ…Â ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬Â¡'],
-            other: ['ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã¢â€šÂ¬', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‹â€ ', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã¢â‚¬Â°', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã…Â ', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã¢â‚¬Â¹', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã…Â½', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã…Â½Ã¢â‚¬Ëœ', 'ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â§', 'ÃƒÂ¢Ã…â€œÃ¢â‚¬Â°ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â©', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â§', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¨', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Âª', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â«', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¬', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â­', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â®', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¯', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€œ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã†â€™', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Å¾', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬Ëœ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â°', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã…Â¾ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â·ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â·ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€œ', 'ÃƒÂ¢Ã…â€œÃ¢â‚¬Å¡ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ…Â ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ¢â‚¬Â¹ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ¢Ã…â€œÃ‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ…â€™ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â½', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€œÃ¢â‚¬Â¡ÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ…Â½', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬Ëœ', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã‚ÂÃƒÂ¯Ã‚Â¸Ã‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â„¢', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬Å“', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â', 'ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â']
+            food: ['ðŸž', 'ðŸ¥', 'ðŸ¥–', 'ðŸ§‡', 'ðŸ¥ž', 'ðŸ§ˆ', 'ðŸ§€', 'ðŸ¥š', 'ðŸ³', 'ðŸ¥“', 'ðŸ¥©', 'ðŸ—', 'ðŸŸ', 'ðŸ¦', 'ðŸ•', 'ðŸŒ®', 'ðŸŒ¯', 'ðŸ¥™', 'ðŸ”', 'ðŸŸ', 'ðŸ¥¨', 'ðŸ', 'ðŸœ', 'ðŸ²', 'ðŸ›', 'ðŸ£', 'ðŸ±', 'ðŸ¥—', 'ðŸ¥ª', 'ðŸ«”', 'ðŸ¤', 'ðŸ¥', 'ðŸ§', 'ðŸŽ‚', 'ðŸ°', 'ðŸ®', 'ðŸ©', 'ðŸª', 'ðŸ«', 'ðŸ¬', 'ðŸ­', 'ðŸ¿', 'ðŸ§‚', 'ðŸ¥«', 'ðŸ«™', 'ðŸ¯', 'ðŸµ', 'ðŸ¥›', 'ðŸ¼', 'â˜•', 'ðŸ§ƒ', 'ðŸ¥¤', 'ðŸº', 'ðŸ»', 'ðŸ¥‚', 'ðŸ·', 'ðŸ¥ƒ', 'ðŸ¸', 'ðŸ¹', 'ðŸ§‰', 'ðŸ¾', 'ðŸ§Š'],
+            drinks: ['â˜•', 'ðŸµ', 'ðŸ¥¤', 'ðŸ§ƒ', 'ðŸ¥›', 'ðŸ¼', 'ðŸ«–', 'ðŸ¶', 'ðŸº', 'ðŸ»', 'ðŸ·', 'ðŸ¥‚', 'ðŸ¥ƒ', 'ðŸ¸', 'ðŸ¹', 'ðŸ§‰', 'ðŸ¾', 'ðŸ§Š', 'ðŸ¥¤', 'ðŸ§‹', 'ðŸµ', 'â˜•', 'ðŸ«•', 'ðŸ¥›', 'ðŸ¼', 'ðŸ§ƒ', 'ðŸ¥¤', 'ðŸ¶', 'ðŸº', 'ðŸ»', 'ðŸ·'],
+            shop: ['ðŸ›’', 'ðŸ›ï¸', 'ðŸ›’', 'ðŸ›ï¸', 'ðŸ§º', 'ðŸ›’', 'ðŸ›ï¸', 'ðŸ’³', 'ðŸ’°', 'ðŸª™', 'ðŸ’µ', 'ðŸ’´', 'ðŸ’¶', 'ðŸ’·', 'ðŸ’¸', 'ðŸ’¹', 'âœ¨', 'ðŸ·ï¸', 'ðŸ§', 'ðŸ“¦', 'ðŸ“¦', 'ðŸ“¦', 'ðŸ“®', 'ðŸ“¯', 'ðŸ“¬', 'ðŸ“­', 'ðŸ“', 'ðŸ“', 'ðŸ“‹', 'ðŸ“', 'ðŸ“‚', 'ðŸ—‚ï¸', 'ðŸ“…', 'ðŸ“†', 'ðŸ—’ï¸', 'ðŸ—“ï¸', 'ðŸ“‡', 'ðŸ“ˆ', 'ðŸ“‰', 'ðŸ“Š', 'ðŸ“‹', 'ðŸ“Œ', 'ðŸ“', 'ðŸ“Ž', 'ðŸ–‡ï¸', 'ðŸ“', 'ðŸ“', 'âœ‚ï¸', 'ðŸ–Šï¸', 'ðŸ–‹ï¸', 'âœï¸', 'ðŸ”', 'ðŸ”Ž', 'ðŸ”', 'ðŸ”'],
+            office: ['âœï¸', 'ðŸ“Ž', 'ðŸ“Œ', 'ðŸ“', 'ðŸ“', 'ðŸ“', 'âœ‚ï¸', 'ðŸ–Šï¸', 'ðŸ–‹ï¸', 'âœ’ï¸', 'ðŸ–Œï¸', 'ðŸ–ï¸', 'ðŸ“', 'ðŸ“„', 'ðŸ“ƒ', 'ðŸ“œ', 'ðŸ“‘', 'ðŸ“‹', 'ðŸ—‚ï¸', 'ðŸ“', 'ðŸ“‚', 'ðŸ—ƒï¸', 'ðŸ—„ï¸', 'ðŸ—³ï¸', 'ðŸ“°', 'ðŸ““', 'ðŸ“”', 'ðŸ“’', 'ðŸ“•', 'ðŸ“—', 'ðŸ“˜', 'ðŸ“™', 'ðŸ“š', 'ðŸ“–', 'ðŸ”–', 'ðŸ·ï¸', 'ðŸ“Œ', 'ðŸ–‡ï¸', 'ðŸ“Ž', 'ðŸ“', 'ðŸ“', 'ðŸ”', 'ðŸ”Ž', 'ðŸ’¼', 'ðŸ§³', 'ðŸ“§', 'ðŸ“¨', 'ðŸ“©', 'ðŸ“®', 'ðŸ“ª', 'ðŸ“«', 'ðŸ“¬', 'ðŸ“­'],
+            tech: ['ðŸ’»', 'ðŸ–¥ï¸', 'ðŸ–¨ï¸', 'ðŸ–±ï¸', 'ðŸ–²ï¸', 'ðŸ’½', 'ðŸ’¾', 'ðŸ’¿', 'ðŸ“€', 'ðŸ“±', 'ðŸ“²', 'â˜Žï¸', 'ðŸ“ž', 'ðŸ“Ÿ', 'ðŸ“ ', 'ðŸ“º', 'ðŸ“»', 'ðŸŽ¥', 'ðŸŽžï¸', 'ðŸ“½ï¸', 'ðŸŽ¬', 'ðŸ“·', 'ðŸ“¸', 'ðŸ“¹', 'ðŸ“¼', 'ðŸ”‹', 'ðŸ”Œ', 'ðŸ’¡', 'ðŸ”¦', 'ðŸ•¯ï¸', 'ðŸ’µ', 'ðŸ’´', 'ðŸ’¶', 'ðŸ’·', 'ðŸ’°', 'ðŸ’³', 'ðŸ’Ž', 'âš–ï¸', 'ðŸ”§', 'ðŸ”¨', 'âš’ï¸', 'ðŸ› ï¸', 'â›ï¸', 'ðŸ”©', 'âš™ï¸', 'ðŸ”—', 'ðŸ“¡', 'ðŸ””', 'ðŸ“¢', 'ðŸ”•', 'ðŸ”ˆ', 'ðŸ”‰', 'ðŸ”Š', 'ðŸ”‡'],
+            other: ['ðŸ“¦', 'ðŸŽ', 'ðŸŽ€', 'ðŸŽˆ', 'ðŸŽ‰', 'ðŸŽŠ', 'ðŸŽ‹', 'ðŸŽ', 'ðŸŽŽ', 'ðŸŽ', 'ðŸŽ', 'ðŸŽ‘', 'ðŸ§§', 'âœ‰ï¸', 'ðŸ“©', 'ðŸ“§', 'ðŸ“¨', 'ðŸ“ª', 'ðŸ“«', 'ðŸ“¬', 'ðŸ“­', 'ðŸ“®', 'ðŸ“¯', 'ðŸ“œ', 'ðŸ“ƒ', 'ðŸ“„', 'ðŸ“‘', 'ðŸ“°', 'ðŸ—žï¸', 'ðŸ·ï¸', 'ðŸ·ï¸', 'ðŸ”–', 'âœ‚ï¸', 'ðŸ–Šï¸', 'ðŸ–‹ï¸', 'âœï¸', 'ðŸ–Œï¸', 'ðŸ–ï¸', 'ðŸ“Œ', 'ðŸ“', 'ðŸ“Ž', 'ðŸ–‡ï¸', 'ðŸ“', 'ðŸ“', 'ðŸ”', 'ðŸ”Ž', 'ðŸ”', 'ðŸ”', 'ðŸ”‘', 'ðŸ—ï¸', 'ðŸ”’', 'ðŸ”“', 'ðŸ”', 'ðŸ”', 'ðŸ”', 'ðŸ”']
         };
 
         function openEmojiPicker() {
@@ -2738,7 +2738,7 @@
                 weight_unit: document.getElementById('productWeightUnit').value,
                 stock: parseInt(document.getElementById('productStock').value), 
                 min_stock: parseInt(document.getElementById('productMinStock').value) || 5, 
-                emoji: document.getElementById('productEmoji').value || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦', 
+                emoji: document.getElementById('productEmoji').value || 'ðŸ“¦', 
                 barcode: document.getElementById('productBarcode').value.trim() || null 
             };
             try {
@@ -2765,7 +2765,7 @@
         function editProduct(id) { openProductModal(id); }
 
         async function deleteProduct(id) {
-            if (!confirm('Ãƒâ€šÃ‚Â¿Eliminar este producto?')) return;
+            if (!confirm('Â¿Eliminar este producto?')) return;
             try { await api(`/products/${id}`, { method: 'DELETE' }); showToast('Producto eliminado', 'success'); await loadProducts(); await loadStats(); await loadInventoryTable(); } catch (e) { }
         }
 
@@ -2797,7 +2797,7 @@
                     <option value="lb">lb</option>
                 </select>
             </td>
-            <td style="${tdStyle} text-align: center;"><input type="text" class="batch-emoji" placeholder="😊" maxlength="4" style="${inputStyle} text-align: center;"></td>
+            <td style="${tdStyle} text-align: center;"><input type="text" class="batch-emoji" placeholder="ðŸ˜Š" maxlength="4" style="${inputStyle} text-align: center;"></td>
             <td style="${tdStyle}"><input type="text" class="batch-barcode" placeholder="Barras" style="${inputStyle}"></td>
             <td style="${tdStyle} text-align: center;"><button type="button" class="btn btn-sm" onclick="this.closest('tr').remove()" style="background: var(--danger); color: white; padding: 0.4rem 0.6rem; font-size: 0.8rem;">X</button></td>
         `;
@@ -2828,7 +2828,7 @@
                 const minStock = parseInt(row.querySelector('.batch-min-stock').value) || 5;
                 const sellByWeight = row.querySelector('.batch-weight').checked;
                 const weightUnit = row.querySelector('.batch-weight-unit').value;
-                const emoji = row.querySelector('.batch-emoji').value.trim() || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦';
+                const emoji = row.querySelector('.batch-emoji').value.trim() || 'ðŸ“¦';
                 const barcode = row.querySelector('.batch-barcode').value.trim() || null;
                 if (name && price > 0) {
                     products.push({
@@ -2866,7 +2866,7 @@
             try {
                 const allSales = await api('/sales');
                 
-                // Cargar categorias para mapear id ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ nombre
+                // Cargar categorias para mapear id â†’ nombre
                 const allCats = await api('/categories');
                 const catMap = {};
                 allCats.forEach(c => { catMap[String(c.id)] = c.name; });
@@ -2899,7 +2899,7 @@
                 document.getElementById('statAvgTicket').textContent = fmt(avgTicket);
                 document.getElementById('statTotalTransactions').textContent = filteredSales.length;
                 
-                // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Productos mÃƒÆ’Ã‚Â¡s vendidos ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+                // â”€â”€ Productos mÃ¡s vendidos â”€â”€
                 const productSales = {};
                 filteredSales.forEach(sale => {
                     (sale.items || []).forEach(item => {
@@ -2913,7 +2913,7 @@
                 });
                 const topProducts = Object.values(productSales).sort((a, b) => b.qty - a.qty).slice(0, 8);
                 document.getElementById('topProducts').innerHTML = topProducts.length === 0
-                    ? '<p class="empty-state">Sin datos de ventas aÃƒÆ’Ã‚Âºn</p>'
+                    ? '<p class="empty-state">Sin datos de ventas aÃºn</p>'
                     : '<table><thead><tr><th>Producto</th><th style="text-align:center">Cant.</th><th style="text-align:right">Total</th></tr></thead><tbody>' +
                       topProducts.map((p, i) =>
                         `<tr style="${i % 2 === 0 ? 'background:#F5F3EF' : ''}">
@@ -2923,7 +2923,7 @@
                           </tr>`
                       ).join('') + '</tbody></table>';
                 
-                // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Ventas por categorÃƒÆ’Ã‚Â­a ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+                // â”€â”€ Ventas por categorÃ­a â”€â”€
                 const categorySales = {};
                 filteredSales.forEach(sale => {
                     (sale.items || []).forEach(item => {
@@ -2931,14 +2931,14 @@
                         const qty   = parseFloat(item.qty || item.quantity) || 0;
                         const price = parseFloat(item.price || item.unit_price) || 0;
                         const prod  = products.find(p => p.name === name);
-                        const catName = prod ? (catMap[String(prod.category_id)] || 'Sin categorÃƒÆ’Ã‚Â­a') : 'Sin categorÃƒÆ’Ã‚Â­a';
+                        const catName = prod ? (catMap[String(prod.category_id)] || 'Sin categorÃ­a') : 'Sin categorÃ­a';
                         if (!categorySales[catName]) categorySales[catName] = 0;
                         categorySales[catName] += price * qty;
                     });
                 });
                 const sortedCats = Object.entries(categorySales).sort((a, b) => b[1] - a[1]);
                 document.getElementById('salesByCategory').innerHTML = sortedCats.length === 0
-                    ? '<p class="empty-state">Sin datos de ventas aÃƒÆ’Ã‚Âºn</p>'
+                    ? '<p class="empty-state">Sin datos de ventas aÃºn</p>'
                     : sortedCats.map(([cat, total]) =>
                         `<div class="stat-row">
                            <span class="stat-row-label">${cat}</span>
@@ -2946,11 +2946,11 @@
                          </div>`
                       ).join('');
                 
-                // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Stock bajo ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+                // â”€â”€ Stock bajo â”€â”€
                 const lowStock = products.filter(p => (p.stock || 0) <= (p.min_stock || 0));
                 document.getElementById('lowStockProducts').innerHTML = lowStock.length === 0
-                    ? '<p class="empty-state">ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ Todos los productos con stock suficiente</p>'
-                    : '<table><thead><tr><th>Producto</th><th style="text-align:center">Stock</th><th style="text-align:center">MÃƒÆ’Ã‚Â­n.</th></tr></thead><tbody>' +
+                    ? '<p class="empty-state">âœ… Todos los productos con stock suficiente</p>'
+                    : '<table><thead><tr><th>Producto</th><th style="text-align:center">Stock</th><th style="text-align:center">MÃ­n.</th></tr></thead><tbody>' +
                       lowStock.map((p, i) =>
                         `<tr style="${i % 2 === 0 ? 'background:#F5F3EF' : ''}">
                             <td style="color:${p.stock === 0 ? 'var(--danger)' : '#8B6914'};font-weight:600;">${p.emoji || ''} ${p.name}</td>
@@ -2959,7 +2959,7 @@
                          </tr>`
                       ).join('') + '</tbody></table>';
                 
-                // ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Ventas ÃƒÆ’Ã‚Âºltimos 7 dÃƒÆ’Ã‚Â­as ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
+                // â”€â”€ Ventas Ãºltimos 7 dÃ­as â”€â”€
                 const last7 = [];
                 for (let i = 6; i >= 0; i--) {
                     const d = new Date();
@@ -2977,14 +2977,14 @@
                     `<div class="stat-row">
                        <span class="stat-row-label">${d.label}</span>
                        <span class="stat-row-value" style="color:${d.total > 0 ? 'var(--primary)' : 'var(--text-light)'};">
-                         ${d.total > 0 ? fmt(d.total) : 'ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â'}
+                         ${d.total > 0 ? fmt(d.total) : 'â€”'}
                        </span>
                      </div>`
                 ).join('');
 
             } catch (e) {
                 console.error('Error cargando estadisticas:', e);
-                showToast('Error al cargar estadÃƒÆ’Ã‚Â­sticas', 'error');
+                showToast('Error al cargar estadÃ­sticas', 'error');
             }
         }
         
@@ -2992,7 +2992,7 @@
             const yearSelect = document.getElementById('statYear');
             const years = [...new Set(sales.map(s => new Date(s.created_at).getFullYear()))].sort();
             const currentValue = yearSelect.value;
-            yearSelect.innerHTML = '<option value="">Todos los aÃƒÆ’Ã‚Â±os</option>' + 
+            yearSelect.innerHTML = '<option value="">Todos los aÃ±os</option>' + 
                 years.map(y => `<option value="${y}">${y}</option>`).join('');
             if (currentValue && years.includes(parseInt(currentValue))) {
                 yearSelect.value = currentValue;
@@ -3024,14 +3024,14 @@
             if (cat.image) {
                 return `<img src="${cat.image}" style="width: 50px; height: 50px; object-fit: contain; border-radius: 8px;">`;
             }
-            return `<span style="font-size: 2rem;">${cat.emoji || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦'}</span>`;
+            return `<span style="font-size: 2rem;">${cat.emoji || 'ðŸ“¦'}</span>`;
         }
 
         function getCategoryIconSmall(cat) {
             if (cat.image) {
                 return `<img src="${cat.image}" style="width: 40px; height: 40px; object-fit: contain; border-radius: 6px;">`;
             }
-            return `<span style="font-size: 1.5rem;">${cat.emoji || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦'}</span>`;
+            return `<span style="font-size: 1.5rem;">${cat.emoji || 'ðŸ“¦'}</span>`;
         }
 
         function renderCategoriesTree() {
@@ -3090,7 +3090,7 @@
             const mainCategories = allCategories.filter(c => !c.parent_id);
             const currentValue = select.value;
             select.innerHTML = '<option value="">-- Categoria Principal --</option>' +
-                mainCategories.map(c => `<option value="${c.id}">${c.emoji || 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã‚Â¦'} ${c.name}</option>`).join('');
+                mainCategories.map(c => `<option value="${c.id}">${c.emoji || 'ðŸ“¦'} ${c.name}</option>`).join('');
             if (currentValue) select.value = currentValue;
         }
 
@@ -3192,7 +3192,7 @@
 
         async function deleteCategory(id) {
             const cat = allCategories.find(c => c.id == id);
-            if (!confirm(`Ãƒâ€šÃ‚Â¿Eliminar la categoria "${cat?.name}"?`)) return;
+            if (!confirm(`Â¿Eliminar la categoria "${cat?.name}"?`)) return;
             try {
                 await api(`/categories/${id}`, { method: 'DELETE' });
                 showToast('Categoria eliminada', 'success');
@@ -3280,7 +3280,7 @@
         function editSupplier(id) { openSupplierModal(id); }
 
         async function deleteSupplier(id) {
-            if (!confirm('Ãƒâ€šÃ‚Â¿Eliminar este proveedor?')) return;
+            if (!confirm('Â¿Eliminar este proveedor?')) return;
             try {
                 await api(`/suppliers/${id}`, { method: 'DELETE' });
                 showToast('Proveedor eliminado', 'success');
@@ -3302,7 +3302,7 @@
                 const container = document.getElementById('combosList');
                 
                 if (combos.length === 0) {
-                    container.innerHTML = '<div class="empty-state"><p>No hay combos registrados. Ãƒâ€šÃ‚Â¡Crea tu primer combo!</p></div>';
+                    container.innerHTML = '<div class="empty-state"><p>No hay combos registrados. Â¡Crea tu primer combo!</p></div>';
                     return;
                 }
                 
@@ -3310,11 +3310,11 @@
                     const origPrice = parseFloat(c.original_price) || 0;
                     const finalPrice = parseFloat(c.final_price) || origPrice;
                     const discPct = origPrice > 0 ? ((1 - finalPrice / origPrice) * 100).toFixed(0) : 0;
-                    const itemsList = (c.items || []).map(i => `${i.quantity}ÃƒÆ’Ã¢â‚¬â€ ${i.product_name}`).join(' + ') || 'ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â';
+                    const itemsList = (c.items || []).map(i => `${i.quantity}Ã— ${i.product_name}`).join(' + ') || 'â€”';
                     return `
                     <div class="combo-card">
                         <div class="combo-card-top">
-                            <div class="combo-card-emoji">${c.emoji || 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â'}</div>
+                            <div class="combo-card-emoji">${c.emoji || 'ðŸŽ'}</div>
                             <div class="combo-card-info">
                                 <div class="combo-card-name">${c.name}</div>
                                 ${c.description ? `<div class="combo-card-desc">${c.description}</div>` : ''}
@@ -3328,8 +3328,8 @@
                         </div>
                         <div class="combo-card-actions">
                             <button class="btn" onclick="addComboToCart('${c.id}')" style="background:#5C6B2E;color:white;">+ Carrito</button>
-                            <button class="btn" onclick="editCombo('${c.id}')" style="background:#D4A843;color:white;">ÃƒÂ¢Ã…â€œÃ‚Â Editar</button>
-                            <button class="btn" onclick="deleteCombo('${c.id}')" style="background:var(--danger);color:white;">ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã¢â‚¬Ëœ Eliminar</button>
+                            <button class="btn" onclick="editCombo('${c.id}')" style="background:#D4A843;color:white;">âœ Editar</button>
+                            <button class="btn" onclick="deleteCombo('${c.id}')" style="background:var(--danger);color:white;">ðŸ—‘ Eliminar</button>
                         </div>
                     </div>`;
                 }).join('');
@@ -3341,7 +3341,7 @@
             comboProducts = [];
             document.getElementById('comboForm').reset();
             document.getElementById('comboModalTitle').textContent = id ? 'Editar Combo' : 'Nuevo Combo';
-            document.getElementById('comboEmoji').value = 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â';
+            document.getElementById('comboEmoji').value = 'ðŸŽ';
             document.getElementById('comboDiscountType').value = 'percentage';
             document.getElementById('comboDiscountValue').value = '10';
             
@@ -3359,7 +3359,7 @@
             try {
                 const combo = await api('/combos/' + id);
                 document.getElementById('comboName').value = combo.name;
-                document.getElementById('comboEmoji').value = combo.emoji || 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â';
+                document.getElementById('comboEmoji').value = combo.emoji || 'ðŸŽ';
                 document.getElementById('comboDescription').value = combo.description || '';
                 document.getElementById('comboDiscountType').value = combo.discount_type;
                 document.getElementById('comboDiscountValue').value = combo.discount_type === 'fixed' ? (combo.final_price || 0) : combo.discount_value;
@@ -3392,7 +3392,7 @@
                     ${selectHtml}
                 </select>
                 <input type="number" class="combo-product-qty" value="1" min="1" placeholder="Cant" style="width: 60px; padding: 0.5rem; border: 2px solid var(--border); border-radius: 6px; text-align: center;">
-                <button type="button" onclick="this.parentElement.remove(); updateComboPrices();" style="background: var(--danger); color: white; border: none; padding: 0.5rem; border-radius: 6px; cursor: pointer; font-size: 1.2rem; line-height: 1;">ÃƒÆ’Ã¢â‚¬â€</button>
+                <button type="button" onclick="this.parentElement.remove(); updateComboPrices();" style="background: var(--danger); color: white; border: none; padding: 0.5rem; border-radius: 6px; cursor: pointer; font-size: 1.2rem; line-height: 1;">Ã—</button>
             `;
             document.getElementById('comboProductsList').appendChild(div);
         }
@@ -3408,7 +3408,7 @@
                 <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center; background: #f9fafb; padding: 0.5rem; border-radius: 6px;">
                     <span style="flex: 2; font-weight: 500;">${item.product_name}</span>
                     <span style="width: 60px; text-align: center; color: var(--text-light);">x${item.quantity}</span>
-                    <button type="button" onclick="removeComboProduct(${idx})" style="background: var(--danger); color: white; border: none; width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: 1rem;">ÃƒÆ’Ã¢â‚¬â€</button>
+                    <button type="button" onclick="removeComboProduct(${idx})" style="background: var(--danger); color: white; border: none; width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: 1rem;">Ã—</button>
                 </div>
             `).join('');
         }
@@ -3503,7 +3503,7 @@
             
             let finalPrice = originalTotal;
             if (discountType === 'fixed') {
-                // El usuario ingresÃƒÆ’Ã‚Â³ el precio final directamente
+                // El usuario ingresÃ³ el precio final directamente
                 finalPrice = Math.max(0, discountValue);
                 const discountPct = originalTotal > 0 ? ((originalTotal - finalPrice) / originalTotal) * 100 : 0;
                 discountValue = discountPct;
@@ -3515,7 +3515,7 @@
             
             const data = {
                 name: document.getElementById('comboName').value.trim(),
-                emoji: document.getElementById('comboEmoji').value || 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â',
+                emoji: document.getElementById('comboEmoji').value || 'ðŸŽ',
                 description: document.getElementById('comboDescription').value.trim(),
                 discount_type: discountType,
                 discount_value: Math.max(0, discountValue),
@@ -3552,7 +3552,7 @@
         }
 
         async function deleteCombo(id) {
-            if (!confirm('Ãƒâ€šÃ‚Â¿Eliminar este combo?')) return;
+            if (!confirm('Â¿Eliminar este combo?')) return;
             try {
                 await api(`/combos/${id}`, { method: 'DELETE' });
                 showToast('Combo eliminado', 'success');
@@ -3572,7 +3572,7 @@
                     id: 'combo_' + combo.id,
                     combo_id: combo.id,
                     name: combo.name,
-                    emoji: combo.emoji || 'ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â',
+                    emoji: combo.emoji || 'ðŸŽ',
                     price: combo.final_price || combo.original_price || 0,
                     original_price: combo.original_price || 0,
                     is_combo: true,
@@ -3884,7 +3884,7 @@
 
         document.body.innerHTML = `
             <div style="max-width: 500px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
-                <button onclick="window.location.href='?tab=purchases'" style="background: #666; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-bottom: 15px;">ÃƒÂ¢Ã¢â‚¬Â Ã‚Â Volver</button>
+                <button onclick="window.location.href='?tab=purchases'" style="background: #666; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-bottom: 15px;">â† Volver</button>
                 
                 <h1 style="color: #022841; margin-bottom: 20px;">Compra #${id}</h1>
 
