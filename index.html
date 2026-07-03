@@ -814,6 +814,7 @@
             <div class="section-header">
                 <h2>Gestion de Productos</h2>
                 <button class="btn btn-primary" onclick="openProductModal()">+ Nuevo Producto</button>
+                <button class="btn btn-secondary" onclick="openBatchProductModal()" style="background: var(--secondary); color: white;">+ Carga Masiva</button>
             </div>
             <div class="search-bar">
                 <input type="text" id="searchProductos" placeholder="Buscar productos..." oninput="loadInventoryTable()">
@@ -1048,6 +1049,32 @@
                     <button type="submit" class="btn-save">Guardar</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- MODAL CARGA MASIVA DE PRODUCTOS -->
+    <div class="modal" id="batchProductModal">
+        <div class="modal-content" style="max-width: 800px; max-height: 85vh; overflow-y: auto;">
+            <h2 style="color: var(--primary); margin-bottom: 1rem;">Carga Masiva de Productos</h2>
+            <div id="batchProductRows">
+                <div class="batch-product-row" style="display: grid; grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;">
+                    <input type="text" class="batch-name" placeholder="Nombre" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                    <select class="batch-category" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;"></select>
+                    <input type="number" class="batch-price" placeholder="Precio venta" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                    <input type="number" class="batch-purchase-price" placeholder="Costo" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                    <input type="number" class="batch-stock" placeholder="Stock" min="0" value="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                    <input type="number" class="batch-min-stock" placeholder="Min" min="0" value="5" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                    <button type="button" class="btn btn-sm" onclick="this.parentElement.remove()" style="background: var(--danger); color: white;">X</button>
+                </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                <button type="button" class="btn btn-sm" onclick="addBatchRow()" style="background: var(--secondary); color: white;">+ Agregar Fila</button>
+                <button type="button" class="btn btn-sm" onclick="addBatchRows(5)" style="background: var(--secondary); color: white;">+ 5 Filas</button>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeBatchProductModal()">Cancelar</button>
+                <button type="button" class="btn-save" onclick="saveBatchProducts()">Guardar Todos</button>
+            </div>
         </div>
     </div>
 
@@ -2730,6 +2757,86 @@
         document.getElementById('productModal').addEventListener('click', (e) => { if (e.target.classList.contains('modal')) closeProductModal(); });
         document.getElementById('ticketModal').addEventListener('click', (e) => { if (e.target.classList.contains('ticket-modal')) closeTicketModal(); });
         document.getElementById('emojiPickerModal').addEventListener('click', (e) => { if (e.target.classList.contains('modal')) closeEmojiPicker(); });
+        document.getElementById('batchProductModal').addEventListener('click', (e) => { if (e.target.classList.contains('modal')) closeBatchProductModal(); });
+
+        function populateBatchCategoryDropdowns() {
+            const selects = document.querySelectorAll('.batch-category');
+            selects.forEach(sel => {
+                if (sel.options.length === 0) {
+                    sel.innerHTML = '<option value="">Sin categoria</option>' + categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+                }
+            });
+        }
+
+        function addBatchRow(count = 1) {
+            const container = document.getElementById('batchProductRows');
+            for (let i = 0; i < count; i++) {
+                const row = document.createElement('div');
+                row.className = 'batch-product-row';
+                row.style.cssText = 'display: grid; grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;';
+                row.innerHTML = `
+                    <input type="text" class="batch-name" placeholder="Nombre" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                    <select class="batch-category" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;"><option value="">Sin categoria</option>${categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}</select>
+                    <input type="number" class="batch-price" placeholder="Precio venta" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                    <input type="number" class="batch-purchase-price" placeholder="Costo" step="0.01" min="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                    <input type="number" class="batch-stock" placeholder="Stock" min="0" value="0" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                    <input type="number" class="batch-min-stock" placeholder="Min" min="0" value="5" style="padding: 0.5rem; border: 2px solid var(--border); border-radius: 8px;">
+                    <button type="button" class="btn btn-sm" onclick="this.parentElement.remove()" style="background: var(--danger); color: white;">X</button>
+                `;
+                container.appendChild(row);
+            }
+        }
+
+        function openBatchProductModal() {
+            document.getElementById('batchProductRows').innerHTML = '';
+            addBatchRow(3);
+            document.getElementById('batchProductModal').classList.add('active');
+        }
+
+        function closeBatchProductModal() {
+            document.getElementById('batchProductModal').classList.remove('active');
+        }
+
+        async function saveBatchProducts() {
+            const rows = document.querySelectorAll('.batch-product-row');
+            const products = [];
+            rows.forEach(row => {
+                const name = row.querySelector('.batch-name').value.trim();
+                const categoryId = row.querySelector('.batch-category').value;
+                const cat = categories.find(c => c.id == categoryId);
+                const price = parseFloat(row.querySelector('.batch-price').value);
+                const purchasePrice = parseFloat(row.querySelector('.batch-purchase-price').value) || null;
+                const stock = parseInt(row.querySelector('.batch-stock').value) || 0;
+                const minStock = parseInt(row.querySelector('.batch-min-stock').value) || 5;
+                if (name && price > 0) {
+                    products.push({
+                        name,
+                        category_id: categoryId || null,
+                        category_name: cat ? cat.name : null,
+                        price,
+                        purchase_price: purchasePrice,
+                        stock,
+                        min_stock: minStock,
+                        emoji: '📦',
+                        barcode: null
+                    });
+                }
+            });
+            if (products.length === 0) { showToast('Complete al menos un producto con nombre y precio', 'error'); return; }
+            let saved = 0;
+            for (const p of products) {
+                try {
+                    await api('/products', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(p) });
+                    saved++;
+                } catch (e) { console.error('Error guardando producto:', p.name, e); }
+            }
+            showToast(`${saved} productos guardados`, 'success');
+            await loadCategories();
+            await loadProducts();
+            await loadStats();
+            await loadInventoryTable();
+            closeBatchProductModal();
+        }
 
         async function loadEstadisticas() {
             try {
