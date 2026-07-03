@@ -1679,7 +1679,7 @@
                 subGrid.style.display = 'grid';
                 document.getElementById('categoriesGrid').style.display = 'none';
             } else {
-                selectedCategory = catName;
+                selectedCategory = catId;
                 selectedMainCategory = null;
                 selectedSubcategory = null;
                 document.getElementById('subcategoriesGrid').style.display = 'none';
@@ -1692,9 +1692,9 @@
 
         function selectSubcategory(mainCatId, subcatId, subcatName) {
             if (subcatId === 'all') {
-                selectedCategory = subcatName;
+                selectedCategory = mainCatId;
             } else {
-                selectedCategory = subcatName;
+                selectedCategory = subcatId;
             }
             selectedSubcategory = { id: subcatId, name: subcatName };
             
