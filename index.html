@@ -3650,7 +3650,8 @@
                         product_id: productSelect.value || null,
                         product_name: productSelect.selectedOptions[0]?.dataset.name || 'Producto',
                         quantity: qty,
-                        unit_cost: cost
+                        unit_cost: cost,
+                        subtotal: qty * cost
                     });
                 }
             });
@@ -3664,10 +3665,11 @@
                 const supplier_id = document.getElementById('purchaseSupplier').value || null;
                 const notes = document.getElementById('purchaseNotes').value;
                 
+                const total = items.reduce((sum, i) => sum + (i.subtotal || 0), 0);
                 const purchase = await api('/purchases', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ supplier_id, items, notes })
+                    body: JSON.stringify({ supplier_id, items, notes, total })
                 });
 
                 const receiptInput = document.getElementById('purchaseReceipt');
