@@ -5709,10 +5709,14 @@
 
         }
 
+        let lastFocusedBatchBarcode = null;
+        document.addEventListener('focusin', function(e) {
+            if (e.target.classList.contains('batch-barcode')) lastFocusedBatchBarcode = e.target;
+        });
         function startBatchBarcodeScan() {
-            const target = document.activeElement && document.activeElement.classList.contains('batch-barcode')
-                ? document.activeElement
-                : document.querySelector('.batch-barcode');
+            const target = lastFocusedBatchBarcode
+                || (document.activeElement && document.activeElement.classList.contains('batch-barcode') ? document.activeElement : null)
+                || document.querySelector('.batch-barcode');
             if (!target) { showToast('Haga clic en un campo de codigo de barras primero', 'error'); return; }
             const el = target;
             startBarcodeScanner(function(code){ el.value = code; });
