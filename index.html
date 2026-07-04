@@ -725,9 +725,7 @@
                 </label>
                 <input type="text" id="barcodeInput" placeholder="Escanee o escriba el codigo..." onkeypress="if(event.key==='Enter') searchByBarcode()">
                 <button class="btn btn-primary" onclick="searchByBarcode()" style="background: white; color: var(--primary);">Buscar</button>
-                <button class="btn btn-primary" onclick="startBarcodeScanner()" id="scanBtn" style="background: #5C6B2E; color: white; padding: 0.8rem 1rem;" title="Escanear con camara">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2h-4M1 19a2 2 0 002 2h4M23 5a2 2 0 00-2-2h-4M1 5a2 2 0 012-2h4"/><path d="M8 10v4M12 10v4M16 10v4"/></svg>
-                </button>
+                <button class="btn btn-primary" onclick="startBarcodeScanner()" id="scanBtn" style="background: #5C6B2E; color: white; padding: 0.8rem 1rem;" title="Escanear con camara">Escanear</button>
             </div>
             <div id="scannerContainer" style="display: none; margin-top: 1rem; position: relative;">
                 <div id="reader" style="width: 100%; max-width: 500px; margin: 0 auto; border-radius: 12px; overflow: hidden;"></div>
