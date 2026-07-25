@@ -1128,7 +1128,7 @@
 
         }
 
-        .stat-panel-body { padding: 1rem; }
+        .stat-panel-body { padding: 1rem; max-height: 300px; overflow-y: auto; }
 
         .stat-panel-body table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 
@@ -5752,6 +5752,42 @@
 
             loadEstadisticas();
 
+        }
+
+        async function loadEstadisticas() {
+            try {
+                if (!allStockData || allStockData.length === 0) {
+                    allStockData = await api('/stock');
+                }
+
+                const outOfStock = allStockData.filter(p => p.stock === 0);
+                const lowStock = allStockData.filter(p => p.stock > 0 && p.stock <= p.min_stock);
+
+                let html = '';
+
+                if (outOfStock.length > 0) {
+                    html += '<div style="background: #F5D0C8; border-left: 4px solid var(--danger); padding: 0.75rem; border-radius: 8px; margin-bottom: 0.75rem;">' +
+                        '<h4 style="color: var(--danger); margin-bottom: 0.5rem;">Sin Stock (' + outOfStock.length + ')</h4>' +
+                        '<div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">' +
+                        outOfStock.map(p => '<span style="background: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">' + (p.emoji || '') + ' ' + p.name + '</span>').join('') +
+                        '</div></div>';
+                }
+
+                if (lowStock.length > 0) {
+                    html += '<div style="background: #F5E6C8; border-left: 4px solid var(--warning); padding: 0.75rem; border-radius: 8px; margin-bottom: 0.75rem;">' +
+                        '<h4 style="color: #8B6914; margin-bottom: 0.5rem;">Stock Bajo (' + lowStock.length + ')</h4>' +
+                        '<div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">' +
+                        lowStock.map(p => '<span style="background: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">' + (p.emoji || '') + ' ' + p.name + ' (' + p.stock + ')</span>').join('') +
+                        '</div></div>';
+                }
+
+                if (outOfStock.length === 0 && lowStock.length === 0) {
+                    html = '<div style="background: #F0EDE8; border-left: 4px solid var(--success); padding: 0.75rem; border-radius: 8px;">' +
+                        '<h4 style="color: var(--success);">Todos los productos con stock suficiente</h4></div>';
+                }
+
+                document.getElementById('lowStockProducts').innerHTML = html;
+            } catch (e) { console.error('loadEstadisticas error:', e); }
         }
 
 
